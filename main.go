@@ -3,11 +3,12 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
 	"html/template"
 	"log"
 	"os"
 	"strings"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var typeArr = map[string]string{
