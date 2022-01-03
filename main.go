@@ -17,7 +17,7 @@ var typeArr = map[string]string{
 	"smallint":  "int32",
 	"mediumint": "int32",
 	"enum":      "int32",
-	"bigint":    "sint64",
+	"bigint":    "int64",
 	"varchar":   "string",
 	"timestamp": "string",
 	"date":      "string",
@@ -25,6 +25,7 @@ var typeArr = map[string]string{
 	"double":    "double",
 	"decimal":   "double",
 	"float":     "float",
+	"datetime":  "datetime",
 }
 
 type Table struct {
@@ -63,6 +64,7 @@ type Field struct {
 	TypeName string
 	AttrName string
 	Num      int
+	Comment  string
 }
 
 type Detail struct {
@@ -77,9 +79,9 @@ type AttrDetail struct {
 }
 
 func main() {
-	tpl := "d:/gopath/src/mysql-to-proto/template/proto.go.tpl"
-	file := "d:/gopath/src/mysql-to-proto/sso.proto"
-	dbName := "user"
+	tpl := "../mysql-to-proto/template/proto.go.tpl"
+	file := "../mysql-to-proto/giftcard_1.proto"
+	dbName := "giftcard_proto"
 	db, err := Connect("mysql", "root:123456@tcp(127.0.0.1:3306)/"+dbName+"?charset=utf8mb4&parseTime=true")
 	//Table names to be excluded
 	exclude := map[string]int{"user_log": 1}
@@ -92,40 +94,40 @@ func main() {
 	}
 	t := Table{}
 	t.Message = map[string]Detail{
-		"Filter": {
-			Name: "Filter",
-			Cat:  "custom",
-			Attr: []AttrDetail{{
-				TypeName: "uint64",
-				AttrName: "id",
-			}},
-		},
+		// "Filter": {
+		// 	Name: "Filter",
+		// 	Cat:  "custom",
+		// 	Attr: []AttrDetail{{
+		// 		TypeName: "uint64",
+		// 		AttrName: "id",
+		// 	}},
+		// },
 		"Request": {
 			Name: "Request",
 			Cat:  "all",
 		},
-		"Response": {
-			Name: "Response",
-			Cat:  "custom",
-			Attr: []AttrDetail{
-				{
-					TypeName: "uint64",
-					AttrName: "id",
-				},
-				{
-					TypeName: "bool",
-					AttrName: "success",
-				},
-			},
-		},
+		// "Response": {
+		// 	Name: "Response",
+		// 	Cat:  "custom",
+		// 	Attr: []AttrDetail{
+		// 		{
+		// 			TypeName: "int64",
+		// 			AttrName: "id",
+		// 		},
+		// 		{
+		// 			TypeName: "BaseResponse",
+		// 			AttrName: "BaseResp",
+		// 		},
+		// 	},
+		// },
 	}
 
 	t.PackageModels = "sso"
 	t.ServiceName = "Sso"
 	t.Method = map[string]MethodDetail{
-		"Get":    {Request: t.Message["Filter"], Response: t.Message["Request"]},
-		"Create": {Request: t.Message["Request"], Response: t.Message["Response"]},
-		"Update": {Request: t.Message["Request"], Response: t.Message["Response"]},
+		// "Get":    {Request: t.Message["Filter"], Response: t.Message["Request"]},
+		// "Create": {Request: t.Message["Request"], Response: t.Message["Response"]},
+		// "Update": {Request: t.Message["Request"], Response: t.Message["Response"]},
 	}
 	t.TableColumn(db, dbName, exclude)
 	t.Generate(file, tpl)
@@ -223,6 +225,7 @@ func (r *RpcServers) HandleMessage(t *Table) {
 		k := StrFirstToUpper(key)
 
 		for name, detail := range t.Message {
+			name = "Info"
 			message.Name = k + name
 			message.MessageDetail = nil
 			if detail.Cat == "all" {
@@ -230,20 +233,27 @@ func (r *RpcServers) HandleMessage(t *Table) {
 				for _, f := range value {
 					field.AttrName = f.Field
 					field.TypeName = TypeMToP(f.Type)
-					field.Num = i
-					message.MessageDetail = append(message.MessageDetail, field)
-					i++
-				}
-			} else if detail.Cat == "custom" {
-				i = 1
-				for _, f := range detail.Attr {
-					field.TypeName = f.TypeName
-					field.AttrName = f.AttrName
+					if f.Type == "datetime" {
+						field.Comment = ";//[DateTime]" + f.Comment
+					} else {
+						field.Comment = ";//" + f.Comment
+					}
+
 					field.Num = i
 					message.MessageDetail = append(message.MessageDetail, field)
 					i++
 				}
 			}
+			// else if detail.Cat == "custom" {
+			// 	i = 1
+			// 	for _, f := range detail.Attr {
+			// 		field.TypeName = f.TypeName
+			// 		field.AttrName = f.AttrName
+			// 		field.Num = i
+			// 		message.MessageDetail = append(message.MessageDetail, field)
+			// 		i++
+			// 	}
+			// }
 			r.MessageList = append(r.MessageList, message)
 		}
 

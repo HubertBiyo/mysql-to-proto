@@ -8,7 +8,7 @@ service {{.Name}} {
 }
 {{range .MessageList }}
 message {{.Name}} {
-{{range .MessageDetail }} {{.TypeName}} {{.AttrName}}={{.Num}}
+{{range .MessageDetail }} {{.TypeName}} {{.AttrName}} = {{.Num}}{{.Comment}}
 {{ end }}
 }
 {{ end }}
