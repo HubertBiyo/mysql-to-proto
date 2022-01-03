@@ -234,9 +234,10 @@ func (r *RpcServers) HandleMessage(t *Table) {
 					field.AttrName = f.Field
 					field.TypeName = TypeMToP(f.Type)
 					if f.Type == "datetime" {
-						field.Comment = ";//[DateTime]" + f.Comment
+						field.TypeName = "int64"
+						field.Comment = "; // [DateTime]" + f.Comment
 					} else {
-						field.Comment = ";//" + f.Comment
+						field.Comment = "; // " + f.Comment
 					}
 
 					field.Num = i
