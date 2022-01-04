@@ -6,1336 +6,836 @@ service Sso {
  
 }
 
-message CrmWxcardGiftcardBatchmakeListInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int32 BatchMakeId = 4; // 批量售卡配置表Id
- string WxCardCode = 5; // 微信礼品卡code
- string CardPwd = 6; // 卡密
- string Status = 7; // 状态 true:已绑定,false:未绑定
- string CreateUser = 8; // 创建人
- int32 CreateUserId = 9; // 创建人Id
- string CreateUserCode = 10; // 创建人工号
- int64 CreateDate = 11; // [DateTime]创建时间
- int64 Id = 12; // 系统编号
- int32 CopId = 13; // 所属集团
- int32 BrandId = 14; // 所属品牌
- int32 BatchMakeId = 15; // 批量售卡配置表Id
- string WxCardCode = 16; // 微信礼品卡code
- string CardPwd = 17; // 卡密
- string Status = 18; // 状态 true:已绑定；false:未绑定
- string CreateUser = 19; // 创建人
- int32 CreateUserId = 20; // 创建人Id
- string CreateUserCode = 21; // 创建人工号
- int64 CreateDate = 22; // [DateTime]创建时间
+message CrmWxCardGiftCardBatchmakeCfgInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string CardId = 4; //微信礼品卡id
+ int32 MakeCount = 5; //售卡张数
+ int32 CardPwdType = 6; //卡密设置 1：纯数字； 2：数字&#43;密码
+ int32 CardPwdNumLength = 7; //卡密位数 6-20位
+ double SaleOrderAmount = 8; //销售订单金额
+ string Remark = 9; //备注
+ string IsExcelOut = 10; //是否已导出 默认 false:未导出, true 已导出 
+ string CreateUser = 11; //创建人
+ int32 CreateUserId = 12; //创建人Id
+ string CreateUserCode = 13; //创建人工号
+ int64 CreateDate = 14; //[DateTime]创建时间
+}
+
+message CrmWxCardGiftCardCardimgInfo {
+ int64 Id = 1; //主键key
+ int32 BrandId = 2; //品牌编号
+ int32 CopId = 3; //
+ string CardImgUuId = 4; //卡封面uuid
+ string CardImgUrl = 5; //卡面背景路径（EZR地址）
+ int32 SellCnt = 6; //售卖次数
+ int64 CreateDate = 7; //[DateTime]创建时间
+ int64 LastModifiedDate = 8; //[DateTime]更新时间
 
 }
 
-message CrmWxcardGiftcardGiftActInfo {
- int64 Id = 1; // 主键,活动ID
- int32 CopId = 2; // 集团编号
- int32 BrandId = 3; // 品牌ID
- string ActName = 4; // 活动名称
- int64 BeginTime = 5; // [DateTime]活动开始时间
- int64 EndTime = 6; // [DateTime]活动结束时间
- int32 GiftType = 7; // 赠送方式（1：买赠(每买一张卡即赠一份) 2：满赠(订单满多少钱后赠送)）
- double GiftOrderAmount = 8; // GiftType = 2 满赠时的订单满足金额
- int32 PerLimitCount = 9; // 每人参与活动次数（0:代表不限制）
- string OrderSourceLimit = 10; // 售卡方式限制(2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入),逗号分隔
- string CardIds = 11; // 参与活动的卡ID,逗号分隔
- string IsGiveBonus = 12; // 是否赠送积分
- string IsGiveCoupon = 13; // 是否赠送券
- string IsGiveGift = 14; // 是否赠送券包
- string IsGiveGiftGold = 15; // 是否赠送增值金
- int32 BonusValue = 16; // 送积分值
- int32 CouponGrpId = 17; // 券库ID
- string CouponName = 18; // 券名称
- int32 CouponLimitType = 19; // 券总量限制（1：每日  2：累计）
- int32 CouponLimitCount = 20; // 券限制数量
- string CouponValidType = 21; // 券有效期类型
- int32 CouponValidDays = 22; // 券有效期天数
- int32 CouponStartValidDays = 23; // 开始有效天数
- int64 CouponValidStartTime = 24; // [DateTime]券有效期开始时间
- int64 CouponValidEndTime = 25; // [DateTime]券有效期结束时间
- string CouponGuide = 26; // 券使用说明
- int32 CouponGiftGrpId = 27; // 券包券库ID
- string CouponGiftName = 28; // 券包名称
- int32 GiftLimitType = 29; // 券包总量限制（1：每日  2：累计）
- int32 GiftLimitCount = 30; // 券包限制数量
- string IsActive = 31; // 是否启用
- int64 GiftGoldId = 32; // 增值金配置表主键
- int32 CreateUserId = 33; // 创建人ID
- int64 CreateDate = 34; // [DateTime]创建时间
- int32 LastModifiedUserId = 35; // 更新人ID
- int64 LastModifiedDate = 36; // [DateTime]更新时间
- int64 Id = 37; // 主键,活动ID
- int32 CopId = 38; // 集团编号
- int32 BrandId = 39; // 品牌ID
- string ActName = 40; // 活动名称
- int64 BeginTime = 41; // [DateTime]活动开始时间
- int64 EndTime = 42; // [DateTime]活动结束时间
- int32 GiftType = 43; // 赠送方式（1：买赠(每买一张卡即赠一份) 2：满赠(订单满多少钱后赠送)）
- double GiftOrderAmount = 44; // GiftType = 2 满赠时的订单满足金额
- int32 PerLimitCount = 45; // 每人参与活动次数（0:代表不限制）
- string OrderSourceLimit = 46; // 售卡方式限制(2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入),逗号分隔
- string CardIds = 47; // 参与活动的卡ID,逗号分隔
- string IsGiveBonus = 48; // 是否赠送积分
- string IsGiveCoupon = 49; // 是否赠送券
- string IsGiveGift = 50; // 是否赠送券包
- string IsGiveGiftGold = 51; // 是否赠送增值金
- int32 BonusValue = 52; // 送积分值
- int32 CouponGrpId = 53; // 券库ID
- string CouponName = 54; // 券名称
- int32 CouponLimitType = 55; // 券总量限制（1：每日  2：累计）
- int32 CouponLimitCount = 56; // 券限制数量
- string CouponValidType = 57; // 券有效期类型
- int32 CouponValidDays = 58; // 券有效期天数
- int32 CouponStartValidDays = 59; // 开始有效天数
- int64 CouponValidStartTime = 60; // [DateTime]券有效期开始时间
- int64 CouponValidEndTime = 61; // [DateTime]券有效期结束时间
- string CouponGuide = 62; // 券使用说明
- int32 CouponGiftGrpId = 63; // 券包券库ID
- string CouponGiftName = 64; // 券包名称
- int32 GiftLimitType = 65; // 券包总量限制（1：每日  2：累计）
- int32 GiftLimitCount = 66; // 券包限制数量
- string IsActive = 67; // 是否启用
- int64 GiftGoldId = 68; // 增值金配置表主键
- int32 CreateUserId = 69; // 创建人ID
- int64 CreateDate = 70; // [DateTime]创建时间
- int32 LastModifiedUserId = 71; // 更新人ID
- int64 LastModifiedDate = 72; // [DateTime]更新时间
+message CrmWxCardGiftCardGiftgoldCfgInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string GiftGoldIsGive = 4; //是否加赠增值金 false:不加赠,true:加赠
+ double GiftGoldAmount = 5; //赠送增值金金额
+ string GiftGoldValidType = 6; //增值金有效期类型
+ int32 GiftGoldValidDays = 7; //增值金有效天数
+ int32 GiftGoldStartValidDays = 8; //开始有效天数
+ string GiftGoldGuide = 9; //增值金使用说明
+ int64 GiftGoldBeginDate = 10; //[DateTime]增值金有效期开始日期
+ int64 GiftGoldEndDate = 11; //[DateTime]增值金有效期结束日期
+ string GiftGoldUseRate = 12; //赠送增值金首付金额百分比
+ double GiftGoldUpperLimit = 13; //单笔赠送金额上限
+ int32 GiveType = 14; //赠送类型 1-买卡赠送 2-邀请有礼赠送
+ int64 CreateDate = 15; //[DateTime]创建时间
+ int32 CreateUserId = 16; //创建人Id
+ string CreateUserCode = 17; //创建人工号
+ int64 LastModifiedDate = 18; //[DateTime]最后更新时间
+ int32 LastModifiedUserId = 19; //最后修改人Id
+ string LastModifiedUserCode = 20; //最后修改人工号
+}
+
+message CrmWxCardGiftCardOpenpayOtherCfgInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string SubMchId = 4; //微信支付商户号
+ string SubMchName = 5; //商户号备注名
+ string Status = 6; //是否启用 false:未启用,true:启用
+ string CreateUser = 7; //创建人
+ int64 CreateDate = 8; //[DateTime]创建时间
+ int32 CreateUserId = 9; //创建人Id
+ string CreateUserCode = 10; //创建人工号
+ string LastModifiedUser = 11; //最后修改人
+ int64 LastModifiedDate = 12; //[DateTime]最后更新时间
+ int32 LastModifiedUserId = 13; //最后修改人Id
+ string LastModifiedUserCode = 14; //最后修改人工号
 
 }
 
-message CrmWxcardGiftcardOrderInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string OrderCode = 4; // 订单号
- int64 OrderPayId = 5; // 支付id
- int32 PageId = 6; // 货架编号
- string WxPageId = 7; // 微信货架编码
- string TransId = 8; // 微信支付交易订单号
- int64 WxCreateTime = 9; // [DateTime]订单在微信端创建时间
- int64 WxPayFinishTime = 10; // [DateTime]订单支付完成时间
- double TotalPrice = 11; // 全部金额
- double WxCouponAmount = 12; // 微信代金券总金额
- string WxCouponJson = 13; // 微信代金券详情(json)
- string WxOpenId = 14; // 购买者的openid
- int64 VipId = 15; // 礼品卡购买者的会员ID
- string WxAccepterOpenId = 16; // 接收者的openid
- string OuterStr = 17; // 购买货架的渠道参数
- string CardImg = 18; // 赠送url
- string PresendUrl = 19; // 赠送url
- int32 OrderSource = 20; // 订单来源 1:微商城(礼品卡小程序) 2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入
- int32 OrderType = 21; // 订单类型 1 - 购买 2 - 赠送
- string IsGuidePrePaid = 22; // 是否导购储值订单
- string Remark = 23; // 备注
- int32 ShopId = 24; // 门店编号
- int32 UserId = 25; // 导购ID
- int32 ImportUserId = 26; // 导入员工ID
- int64 ImportDate = 27; // [DateTime]导入时间
- string SubMchId = 28; // 微信支付商户号
- int64 CreateDate = 29; // [DateTime]创建时间
- int64 LastModifiedDate = 30; // [DateTime]最后更新时间
- int32 DoUserId = 31; // 操作的员工id
- int64 Id = 32; // 系统编号
- int32 CopId = 33; // 所属集团
- int32 BrandId = 34; // 所属品牌
- string OrderCode = 35; // 订单号
- int64 OrderPayId = 36; // 支付id
- int32 PageId = 37; // 货架编号
- string WxPageId = 38; // 微信货架编码
- string TransId = 39; // 微信支付交易订单号
- int64 WxCreateTime = 40; // [DateTime]订单在微信端创建时间
- int64 WxPayFinishTime = 41; // [DateTime]订单支付完成时间
- double TotalPrice = 42; // 全部金额
- double WxCouponAmount = 43; // 微信代金券总金额
- string WxCouponJson = 44; // 微信代金券详情(json)
- string WxOpenId = 45; // 购买者的openid
- int64 VipId = 46; // 礼品卡购买者的会员ID
- string WxAccepterOpenId = 47; // 接收者的openid
- string OuterStr = 48; // 购买货架的渠道参数
- string CardImg = 49; // 赠送url
- string PresendUrl = 50; // 赠送url
- int32 OrderSource = 51; // 订单来源 1:微商城(礼品卡小程序) 2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入
- int32 OrderType = 52; // 订单类型 1 - 购买 2 - 赠送
- string IsGuidePrePaid = 53; // 是否导购储值订单
- string Remark = 54; // 备注
- int32 ShopId = 55; // 门店编号
- int32 UserId = 56; // 导购ID
- int32 ImportUserId = 57; // 导入员工ID
- int64 ImportDate = 58; // [DateTime]导入时间
- string SubMchId = 59; // 微信支付商户号
- int64 CreateDate = 60; // [DateTime]创建时间
- int64 LastModifiedDate = 61; // [DateTime]最后更新时间
- int32 DoUserId = 62; // 操作的员工id
+message CrmWxCardGiftCardPayStateJobInfo {
+ int64 Id = 1; //
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string Appid = 4; //公众账号ID
+ string Mchid = 5; //
+ int64 OrderId = 6; //订单id
+ string OutTradeNo = 7; //商户订单号
+ int32 PayType = 8; //支付方式0 微信
+ int64 CreateDate = 9; //[DateTime]创建时间
+}
+
+message CrmWxCardGiftCardInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string CardId = 4; //微信CardId
+ string CardBrandName = 5; //商户名称
+ string CardTitle = 6; //礼品卡名称
+ string CardLogoPic = 7; //礼品卡Logo图片
+ string CardLogoWxPic = 8; //礼品卡Logo微信图片
+ string CoverType = 9; //礼品卡封面背景类型
+ string CoverPic = 10; //礼品卡封面图片地址(ezp自己的图片)
+ string CoverWxPic = 11; //礼品卡封面图片地址(微信图片，微信不允许外部引用)
+ string CoverColor = 12; //礼品卡颜色(CoverType为1才有)
+ int32 CardFaceType = 13; //0：设置卡面值 1：自定义卡面值
+ double Price = 14; //礼品卡售价
+ double InitBalance = 15; //礼品卡初始余额
+ double GiftAmount = 16; //赠送金额
+ int32 Quantity = 17; //礼品卡库存的数量，不支持填写0，上限为100000000
+ int32 CurrentQuantity = 18; //可用库存
+ int32 PerLimitCount = 19; //每人限购数量(0：无限制)
+ int32 StartLimitCount = 20; //起购数量
+ string IsShowInitBalance = 21; //用户购买礼品卡后卡面上是否显示初始余额
+ string ValidityType = 22; //礼品卡有效期类型
+ int32 ValidityDays = 23; //礼品卡有效期天数
+ int64 BegDate = 24; //[DateTime]礼品卡有效期开始日期
+ int64 EndDate = 25; //[DateTime]礼品卡有效期结束日期
+ string IsCanGiveFriend = 26; //礼品卡是否可以转赠(1.可以 0.不可以)
+ int32 CanGiveFriendMaxTimes = 27; //礼品卡最大可赠送次数
+ string CodeType = 28; //礼品卡Code展示类型
+ string CodeShowType = 29; //礼品卡卡号展示类型（动态码：DY，静态码：ST）
+ string SupplyCoupon = 30; //默认菜单是否显示优惠券
+ string SupplyGrade = 31; //默认菜单是否显示等级
+ string SupplyBalance = 32; //默认菜单是否显示余额
+ string SupplyBonus = 33; //默认菜单是否显示积分
+ string SupplyCustom = 34; //是否显示自定义菜单
+ string CustomMenuUrl = 35; //自定义菜单跳转链接地址
+ string CustomMenuName = 36; //自定义菜单名称
+ string CustomCell = 37; //自定义会员信息类目json字符串，会员卡激活后显示,包含name和url字段
+ string Notice = 38; //礼品卡使用提醒，字数上限为12个汉字。
+ string IsCanUseMallDiscount = 39; //是否可以使用商城折扣活动
+ string IsAllowCrmUse = 40; //是否允许crm使用
+ string IsAllowSaleCardShopUse = 41; //仅售卡门店使用
+ string IsAllowSaleCardMallUse = 42; //仅售卡商城店使用
+ string IsAllowMallUse = 43; //是否允许商城使用
+ string ShopIds = 44; //
+ string ShopType = 45; //店铺类型(店铺，店群，片区)
+ string MallShopType = 46; //商城店铺类型
+ string MallShopIds = 47; //商城店铺Id,逗号相隔
+ string PhysicalStoreAllowShopType = 48; //门店售卡可售门店类型(店群，片区，门店)
+ string PhysicalStoreAllowShopId = 49; //门店售卡可售门店(店群，片区，门店)Ids
+ string PhysicalStoreAllowShopIds = 50; //门店售卡可售门店
+ string Description = 51; //礼品卡使用说明。长文本描述，可以分行，上限为1000个汉字。
+ string AvailableTime = 52; //可用时段
+ string CenterType = 53; //礼品卡居中的按钮类型（CS：自定义，WP：核销按钮）
+ string CenterTitle = 54; //礼品卡居中的按钮，仅在卡券状态正常(可以核销)时显示，建议用于引导使用或者充值流程
+ string CenterSubTitle = 55; //礼品卡居中按钮的引导提示语
+ string CenterUrl = 56; //礼品卡居中入口的链接
+ string CenterUrlRemark = 57; //中心按钮链接备注
+ string IsCenterJumpWxa = 58; //中心按钮是否跳转至小程序
+ string CenterWxaAppId = 59; //中心按钮跳转至小程序AppId
+ string CenterAppBrandUserName = 60; //中心按钮自定义cell对应的小程序username，格式为公众号原始id@app
+ string CenterAppBrandPass = 61; //中心按钮自定义cell对应的小程序路径
+ string CustomUrlName = 62; //商户自定义入口名称，与custom_url字段共同使用，长度限制在5个汉字内。
+ string CustomUrl = 63; //商户自定义入口跳转外链的地址链接,跳转页面内容需与自定义cell名称保持匹配。
+ string CustomUrlRemark = 64; //自定义入口01链接备注
+ string CustomUrlSubTitle = 65; //显示在自定义入口右侧的提示语，长度限制在6个汉字内。
+ string IsCustomJumpWxa = 66; //自定义01是否跳转至小程序
+ string CustomWxaAppId = 67; //自定义01跳转至小程序AppId
+ string CustomAppBrandUserName = 68; //自定义01cell对应的小程序username，格式为公众号原始id@app
+ string CustomAppBrandPass = 69; //自定义01cell对应的小程序路径
+ string PromotionUrlName = 70; //营销场景的自定义入口名称
+ string PromotionUrl = 71; //入口跳转外链的地址链接
+ string PromotionUrlRemark = 72; //自定义入口02链接备注
+ string PromotionUrlSubTitle = 73; //显示在营销入口右侧的提示语，长度限制在6个汉字内。
+ string IsPromotionJumpWxa = 74; //自定义02是否跳转至小程序
+ string PromotionWxaAppId = 75; //自定义02跳转至小程序AppId
+ string PromotionAppBrandUserName = 76; //自定义02cell对应的小程序username，格式为公众号原始id@app
+ string PromotionAppBrandPass = 77; //自定义02cell对应的小程序路径
+ int64 ProdItemId = 78; //礼品卡关联的商品编号
+ string ProdPictureThumb = 79; //礼品卡关联的商品缩略图
+ string ProdWxPictureThumb = 80; //礼品卡关联的商品缩略图(微信图片，微信不允许外部引用)
+ string ProdDesc = 81; //礼品卡关联的商品描述
+ int32 CouponGrpId = 82; //礼品卡关联的券库编号
+ string CouponName = 83; //礼品卡关联的券名称
+ string CouponGuide = 84; //礼品卡关联的券说明
+ string CouponValidType = 85; //礼品卡关联的券有效期类型
+ int32 CouponDuration = 86; //礼品卡关联的券有效期天数
+ int64 CouponValidStartTime = 87; //[DateTime]礼品卡关联的券有效期开始时间
+ int64 CouponValidEndTime = 88; //[DateTime]礼品卡关联的券有效期结束时间
+ string IsEnableCenterButton = 89; //是否启用中心按钮
+ string CardType = 90; //礼品卡关联商品类型（EN：实物商品，VT：虚拟商品）
+ string IsConsumeWord = 91; //是否启用消费者自助核销
+ string ConsumeWord = 92; //礼品卡核销口令
+ int32 Status = 93; //礼品卡状态 0:制作中 1:微信审核中 2：审核成功 3：审核失败
+ int32 Type = 94; //礼品卡类型 1 - 微信 2 - EZR
+ int32 CardSource = 95; //建卡来源 0 PC端创建 2 营销助手小店版创建
+ string IsDefaultImport = 96; //是否是默认的导入卡
+ int64 OtherSubMchId = 97; //微信支付商户配置表Id
+ int64 GiftGoldId = 98; //增值金配置表主键
+ string CreateUser = 99; //创建人
+ int64 CreateDate = 100; //[DateTime]创建时间
+ string LastModifiedUser = 101; //最后修改人
+ int64 LastModifiedDate = 102; //[DateTime]最后更新时间
+}
+
+message CrmWxCardGiftCardBatchmakeOperationLogInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int32 BatchMakeId = 4; //批量售卡Id
+ int32 Type = 5; //操作类型 1:新建, 2:导出卡,3:添加备注
+ string Content = 6; //操作内容
+ string CreateUser = 7; //创建人
+ int32 CreateUserId = 8; //创建人Id
+ string CreateUserCode = 9; //创建人工号
+ int64 CreateDate = 10; //[DateTime]创建时间
+}
+
+message CrmWxCardGiftCardListInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string WxOpenId = 4; //微信openid
+ int64 VipId = 5; //礼品卡所属的会员ID
+ int64 OrderId = 6; //订单编号
+ int64 OrderDtlId = 7; //订单明细编号
+ int32 OrderSource = 8; //订单来源 1:微商城(礼品卡小程序) 2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入
+ string WxCardId = 9; //微信礼品卡id
+ string WxCardCode = 10; //微信礼品卡code
+ string OldWxCardCode = 11; //老卡号，发生转增时的老卡号
+ string CardType = 12; //卡类型 PC-储值卡 GC-礼品卡
+ double Balance = 13; //余额
+ double GiftBalance = 14; //赠送余额
+ double InitBalance = 15; //初始余额
+ double Price = 16; //卡售价
+ int32 Status = 17; //状态（0：可使用，2：转赠中，4：已使用，6：已核销，8：已退款）
+ int64 SellDate = 18; //[DateTime]核销时间
+ int32 SellChannel = 19; //核销渠道
+ int32 CardFaceType = 20; //0：设置卡面值 1：自定义卡面值
+ int64 CardValidityBeginTime = 21; //[DateTime]卡有效开始时间
+ int64 CardValidityEndTime = 22; //[DateTime]卡有效结束时间
+ string IsGiveFriend = 23; //是否转增
+ int64 CreateDate = 24; //[DateTime]创建时间
+ int64 LastModifiedDate = 25; //[DateTime]最后修改时间
+}
+
+message CrmWxCardGiftCardRefundCfgInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string IsAllowedRefund = 4; //是否允许退款
+ string IsOpenAudit = 5; //是否开启审核
+ string IsChargeManagementFee = 6; //是否收取管理费
+ string IsEnableDate = 7; //是否开启购卡多少时间后收取管理费
+ int32 DateType = 8; //时间值
+ int32 DateValue = 9; //时间值
+ double ManagementFee = 10; //每日管理费
+ string IsEnableRefundMinBalance = 11; //是否开启储值卡允许退款的最低金额
+ double AllowedRefundMinBalance = 12; //储值卡允许退款的最低金额
+ string IsEnableRefundMaxBalance = 13; //是否开启储值卡允许退款的最高金额
+ double AllowedRefundMaxBalance = 14; //储值卡允许退款的最高金额
+ int32 ReturnType = 15; //退款方式(1、微信支付可用余额中退款2、微信支付未结算资金中退款)
+ string CreateUser = 16; //创建人
+ int64 CreateDate = 17; //[DateTime]创建时间
+ string LastModifiedUser = 18; //最后修改人
+ int64 LastModifiedDate = 19; //[DateTime]最后更新时间
 
 }
 
-message CrmWxcardGiftcardRefundLogInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string RefundId = 4; // 微信退款单号
- string RefundCode = 5; // 商户退款单号
- string TransId = 6; // 微信支付交易订单号
- string OrderCode = 7; // 微信订单号
- double OrderTotalAmount = 8; // 订单总金额
- double RefundAmount = 9; // 退款金额
- double CashPayAmount = 10; // 现金支付金额
- double CashRefundAmount = 11; // 现金退款金额
- double WxCouponRefundAmount = 12; // 微信代金券退款总金额
- int32 WxCouponRefundCount = 13; // 微信退款代金券使用数量
- string WxCardId = 14; // 用户退款的礼品卡ID
- string WxCardCode = 15; // 用户退款的礼品卡Code
- int64 CreateDate = 16; // [DateTime]创建时间
+message CrmWxCardGiftCardTradLogInfo {
+ int64 Id = 1; //Id
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //品牌ID
+ int64 VipId = 4; //会员编号
+ int64 CardListId = 5; //购买卡编号
+ string CardId = 6; //微信CardId
+ string CardCode = 7; //卡号
+ string CardTitle = 8; //卡名称
+ int32 TradType = 9; //交易类型(1:开卡 2:核销-礼品卡 3:退款 4:退卡 5:扣款-储值卡 6:充值 7：手工减少 8：手工增加 9:退卡退款）
+ string CardType = 10; //卡类型 PC-储值卡 GC-礼品卡
+ double TotalAmount = 11; //总金额（开卡初始金额、礼品卡核销总面值、退款总金额、退卡总金额、扣款总金额）
+ double GiveAmount = 12; //赠送金额（仅储值卡有：开卡、扣款）
+ double WxGiveAmount = 13; //微信优惠
+ double ActualAmount = 14; //实际本金（开卡、扣款）
+ double ManagementFee = 15; //退款管理费（退款）
+ int32 ShopId = 16; //门店ID
+ string ShopCode = 17; //门店编号
+ string ShopName = 18; //门店名称
+ int32 UseChannel = 19; //使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 5:历史卡导入 90:小程序购卡 91:门店售卡
+ int64 TradTime = 20; //[DateTime]交易时间
+ string TradDate = 21; //TradTime的日期
+ int64 SourceId = 22; //源表ID
+ int64 CreateTime = 23; //[DateTime]创建时间
 
 }
 
-message CrmWxcardGiftcardUseLogInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string WxOpenId = 4; // 微信openId
- int64 VipId = 5; // 会员编号
- int64 CardListId = 6; // 卡编号
- string WxCardId = 7; // 微信礼品卡id
- string WxCardCode = 8; // 微信礼品卡code
- string TransId = 9; // 操作流水号
- string ExternalOrderId = 10; // 外部订单号
- string OriginalOrderId = 11; // 原始订单号
- double DeductionValue = 12; // 扣除值
- double DeductionBalance = 13; // 扣除后剩余余额
- double GiftBalance = 14; // 使用后的赠送余额
- double PriceBalance = 15; // 使用后的本金余额
- double DeductionGiftAmount = 16; // 使用的赠送金额
- double DeductionPriceAmount = 17; // 使用的本金
- string Remark = 18; // 说明备注
- int32 ShopId = 19; // 门店编号
- int32 UserId = 20; // 礼品卡核销或者储值卡扣款充值操作员工ID
- string UseType = 21; // 余额变动类型（RF:扣款，RC:消费退款，RP:买卡，HD:手动减少，HU:手工增加，RB:退卡退款）
- int32 UseChannel = 22; // 使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 5:历史卡导入 90:小程序购卡 91:门店售卡
- string OrderCode = 23; // 商户订单号
- string WxPayTransId = 24; // 微信支付交易订单号
- int32 GiftGoldType = 25; // 增值金流水类型 1-买卡赠送 2-邀请有礼赠送 3-消费扣款 4-消费退款返还
- string RelationNum = 26; // 关联编号
- int64 CreateDate = 27; // [DateTime]创建时间
- int64 Id = 28; // 系统编号
- int32 CopId = 29; // 所属集团
- int32 BrandId = 30; // 所属品牌
- string WxOpenId = 31; // 微信openId
- int64 VipId = 32; // 会员编号
- int64 CardListId = 33; // 卡编号
- string WxCardId = 34; // 微信礼品卡id
- string WxCardCode = 35; // 微信礼品卡code
- string TransId = 36; // 操作流水号
- string ExternalOrderId = 37; // 外部订单号
- string OriginalOrderId = 38; // 原始订单号
- double DeductionValue = 39; // 扣除值
- double DeductionBalance = 40; // 扣除后剩余余额
- double GiftBalance = 41; // 使用后的赠送余额
- double PriceBalance = 42; // 使用后的本金余额
- double DeductionGiftAmount = 43; // 使用的赠送金额
- double DeductionPriceAmount = 44; // 使用的本金
- string Remark = 45; // 说明备注
- int32 ShopId = 46; // 门店编号
- int32 UserId = 47; // 礼品卡核销或者储值卡扣款充值操作员工ID
- string UseType = 48; // 余额变动类型（RF:扣款，RC:消费退款，RP:买卡，HD:手动减少，HU:手工增加，RB:退卡退款）
- int32 UseChannel = 49; // 使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 5:历史卡导入 90:小程序购卡 91:门店售卡
- int32 GiftGoldType = 50; // 增值金流水类型 1-买卡赠送 2-邀请有礼赠送 3-消费扣款 4-消费退款返还
- string RelationNum = 51; // 关联编号
- int64 CreateDate = 52; // [DateTime]创建时间
+message CrmWxCardGiftCardGiftLogInfo {
+ int64 Id = 1; //主键ID
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int64 ActId = 4; //活动Id
+ int64 VipId = 5; //会员ID
+ string IsGiveBonus = 6; //是否赠送积分
+ string IsGiveCoupon = 7; //是否赠送券
+ string IsGiveGift = 8; //是否赠送券包
+ int32 CouponGrpId = 9; //券库ID
+ int32 CouponGiftGrpId = 10; //券包ID
+ int32 BonusValue = 11; //赠送的积分值
+ string GiveCouponNo = 12; //券券号，逗号分隔
+ string CouponName = 13; //券名称，逗号分隔只为展示
+ string GiveGiftCouponNo = 14; //券包券号，逗号相隔
+ string GiftCouponName = 15; //券包券名称，逗号分隔只为展示
+ int64 OrderId = 16; //订单ID
+ string WxCardId = 17; //卡ID
+ int64 CardId = 18; //卡规则ID
+ string Remark = 19; //备注
+ int64 GiveDate = 20; //[DateTime]赠送时间
+ int32 GiveDateInt = 21; //赠送时间Int
+ string IsGive = 22; //是否赠送
+ int64 CreateDate = 23; //[DateTime]创建时间
+}
+
+message CrmWxCardGiftCardOrderWxpayInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string OrderCode = 4; //商户订单号
+ int64 PayTime = 5; //[DateTime]付款时间
+ int32 PayStatus = 6; //支付状态0-未支付 1-支付成功 2-支付失败
+ string PayErrMsg = 7; //支付错误信息
+ double PayAmount = 8; //支付金额
+ double WxCouponAmount = 9; //微信代金券总金额
+ string WxCouponJson = 10; //微信代金券详情(json)
+ string TransactionId = 11; //微信支付订单号
+ string SubMchId = 12; //微信支付商户号
+ string WxOpenAppId = 13; //微信小程序appid
+ int64 BuyerId = 14; //会员Id
+ string BuyerOpenId = 15; //微信会员openid
+ int64 CreateDate = 16; //[DateTime]创建时间
+ int64 LastModifiedDate = 17; //[DateTime]最后修改时间
+}
+
+message CrmWxCardGiftCardPageThemeInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int32 CategoryId = 4; //货架类别编号
+ string Title = 5; //货架主题标题
+ string ThemePicUrl = 6; //货架主题图片
+ string ThemeWxPicUrl = 7; //货架主题微信图片
+ string ThemeColor = 8; //货架主题颜色
+ int32 Status = 9; //货架主题状态 0:禁用 1:启用
+ int32 SortIndex = 10; //货架分类主题排序
+ string KMPicItems = 11; //货架主题卡面结构体json字符串,包含BackgroundPicUrl,BackgroundWxPicUrl和DefaultGiftingMsg字段
+ string GiftCardIds = 12; //礼品卡ID
+ string CreateUser = 13; //创建人
+ int64 CreateDate = 14; //[DateTime]创建时间
+ string LastModifiedUser = 15; //最后修改人
+ int64 LastModifiedDate = 16; //[DateTime]最后更新时间
 
 }
 
-message CrmWxcardGiftcardBatchmakeCfgInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string CardId = 4; // 微信礼品卡id
- int32 MakeCount = 5; // 售卡张数
- int32 CardPwdType = 6; // 卡密设置 1：纯数字； 2：数字&#43;密码
- int32 CardPwdNumLength = 7; // 卡密位数 6-20位
- double SaleOrderAmount = 8; // 销售订单金额
- string Remark = 9; // 备注
- string IsExcelOut = 10; // 是否已导出 默认 false:未导出, true 已导出 
- string CreateUser = 11; // 创建人
- int32 CreateUserId = 12; // 创建人Id
- string CreateUserCode = 13; // 创建人工号
- int64 CreateDate = 14; // [DateTime]创建时间
- int64 Id = 15; // 系统编号
- int32 CopId = 16; // 所属集团
- int32 BrandId = 17; // 所属品牌
- string CardId = 18; // 微信礼品卡id
- int32 MakeCount = 19; // 售卡张数
- int32 CardPwdType = 20; // 卡密设置 1：纯数字； 2：数字&#43;密码
- int32 CardPwdNumLength = 21; // 卡密位数 6-20位
- double SaleOrderAmount = 22; // 销售订单金额
- string Remark = 23; // 备注
- string IsExcelOut = 24; // 是否已导出 默认 false:未导出, true 已导出 
- string CreateUser = 25; // 创建人
- int32 CreateUserId = 26; // 创建人Id
- string CreateUserCode = 27; // 创建人工号
- int64 CreateDate = 28; // [DateTime]创建时间
+message CrmWxCardGiftCardTradSummaryInfo {
+ int64 Id = 1; //Id
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //品牌ID
+ string TradDate = 4; //交易日期
+ int32 ShopId = 5; //门店ID
+ string ShopCode = 6; //门店编号
+ string ShopName = 7; //门店名称
+ int32 UseChannel = 8; //使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 5:历史卡导入 90:小程序购卡 91:门店售卡
+ double GiftCardConsumeAmount = 9; //礼品卡核销金额
+ double GiftCardRefundAmount = 10; //礼品卡退款金额
+ double PetCardUseAmount = 11; //储值卡扣款金额
+ double PetCardRefundAmount = 12; //储值卡退款金额
+ double HandDownAmount = 13; //手工减少金额
+ int64 LastModifiedDate = 14; //[DateTime]最后更新时间
+ int64 CreateDate = 15; //[DateTime]创建时间
 
 }
 
-message CrmWxcardGiftcardCfgInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string BackgroundPic = 4; // 背景图
- string FullBackgroundPic = 5; // 背景图（全路径）
- string IsGiftGold = 6; // 是否开启增值金业务 true-开启,false-未开启
- string GiftGoldUseRate = 7; // 增值金使用比率
- string GiftGoldName = 8; // 增值金名称
- string GiftGoldCoverPic = 9; // 增值金封面图片地址
- string IsBuyCardProto = 10; // 用户下单是否需要同意购买协议
- string ProtoTitle = 11; // 购买协议标题
- string ProtoContent = 12; // 购买协议内容
- int64 CreateDate = 13; // [DateTime]创建时间
- int64 Id = 14; // 系统编号
- int32 CopId = 15; // 所属集团
- int32 BrandId = 16; // 所属品牌
- string BackgroundPic = 17; // 背景图
- string FullBackgroundPic = 18; // 背景图（全路径）
- string IsGiftGold = 19; // 是否开启增值金业务 true-开启,false-未开启
- string GiftGoldUseRate = 20; // 增值金使用比率
- string GiftGoldName = 21; // 增值金名称
- string GiftGoldCoverPic = 22; // 增值金封面图片地址
- string IsBuyCardProto = 23; // 用户下单是否需要同意购买协议
- string ProtoTitle = 24; // 购买协议标题
- string ProtoContent = 25; // 购买协议内容
- int64 CreateDate = 26; // [DateTime]创建时间
+message CrmWxCardGiftCardConsumeLogInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string WxOpenId = 4; //微信openId
+ int64 VipId = 5; //会员编号
+ int64 CardListId = 6; //卡编号
+ string WxCardId = 7; //微信礼品卡id
+ string WxCardCode = 8; //微信礼品卡code
+ string TransId = 9; //操作流水号
+ string ExternalOrderId = 10; //外部订单号
+ string Remark = 11; //说明备注
+ int32 ShopId = 12; //门店编号
+ int32 UserId = 13; //礼品卡核销操作员工ID
+ int32 UseChannel = 14; //使用渠道 0:第三方POS收银 1:EZR线上商城 2:EZR POS收银
+ int64 CreateDate = 15; //[DateTime]创建时间
+}
+
+message CrmWxCardGiftCardOpenpayCfgInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string SubMchId = 4; //微信支付商户号
+ string WxPayKey = 5; //微信安全支付密钥
+ string PayCert = 6; //支付证书文件
+ string WxaAppId = 7; //礼品卡小程序appid
+ string OpenPayUrl = 8; //
+ double MaxPayAmount = 9; //单笔订单最大支付金额
+ string CreateUser = 10; //创建人
+ int64 CreateDate = 11; //[DateTime]创建时间
+ string LastModifiedUser = 12; //最后修改人
+ int64 LastModifiedDate = 13; //[DateTime]最后更新时间
+}
+
+message CrmWxCardGiftCardRefundDtlInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int64 RefundId = 4; //退款单编号
+ int32 CardId = 5; //礼品卡编号
+ string WxCardId = 6; //微信礼品卡编码
+ int64 CardListId = 7; //购买卡编号
+ double Price = 8; //该礼品卡的销售价格
+ double Balance = 9; //卡余额（可用余额包含赠送）
+ double GiftBalance = 10; //退款时的卡赠送余额
+ double PriceBalance = 11; //退款时的卡售价余额
+ double RefundAmount = 12; //退款金额
+ double WxCouponRefundAmount = 13; //微信代金券退款总金额
+ int32 WxCouponRefundCount = 14; //微信退款代金券使用数量
+ double ManagementFee = 15; //收取的管理费
+ string CardCode = 16; //用户退款的礼品卡code
+ int32 Status = 17; //退款状态 0退款中 1完成
+ string FailReason = 18; //退款失败原因
+ int64 CreateDate = 19; //[DateTime]创建时间
+ int64 LastModifiedDate = 20; //[DateTime]最后修改时间
+}
+
+message CrmWxCardGiftCardUseLogInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string WxOpenId = 4; //微信openId
+ int64 VipId = 5; //会员编号
+ int64 CardListId = 6; //卡编号
+ string WxCardId = 7; //微信礼品卡id
+ string WxCardCode = 8; //微信礼品卡code
+ string TransId = 9; //操作流水号
+ string ExternalOrderId = 10; //外部订单号
+ string OriginalOrderId = 11; //原始订单号
+ double DeductionValue = 12; //扣除值
+ double DeductionBalance = 13; //扣除后剩余余额
+ double GiftBalance = 14; //使用后的赠送余额
+ double PriceBalance = 15; //使用后的本金余额
+ double DeductionGiftAmount = 16; //使用的赠送金额
+ double DeductionPriceAmount = 17; //使用的本金
+ string Remark = 18; //说明备注
+ int32 ShopId = 19; //门店编号
+ int32 UserId = 20; //礼品卡核销或者储值卡扣款充值操作员工ID
+ string UseType = 21; //余额变动类型（RF:扣款，RC:消费退款，RP:买卡，HD:手动减少，HU:手工增加，RB:退卡退款）
+ int32 UseChannel = 22; //使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 5:历史卡导入 90:小程序购卡 91:门店售卡
+ string OrderCode = 23; //商户订单号
+ string WxPayTransId = 24; //微信支付交易订单号
+ int32 GiftGoldType = 25; //增值金流水类型 1-买卡赠送 2-邀请有礼赠送 3-消费扣款 4-消费退款返还
+ string RelationNum = 26; //关联编号
+ int64 CreateDate = 27; //[DateTime]创建时间
+}
+
+message CrmWxCardGiftCardSellLogInfo {
+ int64 Id = 1; //Id
+ string CardId = 2; //卡ID、微信卡ID
+ int32 CopId = 3; //所属集团
+ int32 BrandId = 4; //品牌ID
+ int32 SellQuantity = 5; //已售卖数量
+ int64 LastModifiedDate = 6; //[DateTime]最后一次更新时间
 
 }
 
-message CrmWxcardGiftcardGovpushLogInfo {
- int64 Id = 1; // 主键
- int32 CopId = 2; // 集团编号
- int32 BrandId = 3; // 品牌编号
- string CardCode = 4; // 微信礼品卡code
- int32 SourceType = 5; // 来源类型 0:买卡 1:使用 2:退卡
- int64 SourceId = 6; // 来源ID,根据类型区分
- string PushJson = 7; // 推送Josn
- string ResponseJson = 8; // 请求响应体
- string ErrorCode = 9; // 错误码
- int32 PushStatus = 10; // 推送状态 1：已推送成功 2:推送失败
- int64 CreateDate = 11; // [DateTime]创建时间
- int64 LastModifiedDate = 12; // [DateTime]更新时间
+message CrmWxCardGiftCardCfgInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string BackgroundPic = 4; //背景图
+ string FullBackgroundPic = 5; //背景图（全路径）
+ string IsGiftGold = 6; //是否开启增值金业务 true-开启,false-未开启
+ string GiftGoldUseRate = 7; //增值金使用比率
+ string GiftGoldName = 8; //增值金名称
+ string GiftGoldCoverPic = 9; //增值金封面图片地址
+ string IsBuyCardProto = 10; //用户下单是否需要同意购买协议
+ string ProtoTitle = 11; //购买协议标题
+ string ProtoContent = 12; //购买协议内容
+ int64 CreateDate = 13; //[DateTime]创建时间
+}
+
+message CrmWxCardGiftCardGiftActInfo {
+ int64 Id = 1; //主键,活动ID
+ int32 CopId = 2; //集团编号
+ int32 BrandId = 3; //品牌ID
+ string ActName = 4; //活动名称
+ int64 BeginTime = 5; //[DateTime]活动开始时间
+ int64 EndTime = 6; //[DateTime]活动结束时间
+ int32 GiftType = 7; //赠送方式（1：买赠(每买一张卡即赠一份) 2：满赠(订单满多少钱后赠送)）
+ double GiftOrderAmount = 8; //GiftType = 2 满赠时的订单满足金额
+ int32 PerLimitCount = 9; //每人参与活动次数（0:代表不限制）
+ string OrderSourceLimit = 10; //售卡方式限制(2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入),逗号分隔
+ string CardIds = 11; //参与活动的卡ID,逗号分隔
+ string IsGiveBonus = 12; //是否赠送积分
+ string IsGiveCoupon = 13; //是否赠送券
+ string IsGiveGift = 14; //是否赠送券包
+ string IsGiveGiftGold = 15; //是否赠送增值金
+ int32 BonusValue = 16; //送积分值
+ int32 CouponGrpId = 17; //券库ID
+ string CouponName = 18; //券名称
+ int32 CouponLimitType = 19; //券总量限制（1：每日  2：累计）
+ int32 CouponLimitCount = 20; //券限制数量
+ string CouponValidType = 21; //券有效期类型
+ int32 CouponValidDays = 22; //券有效期天数
+ int32 CouponStartValidDays = 23; //开始有效天数
+ int64 CouponValidStartTime = 24; //[DateTime]券有效期开始时间
+ int64 CouponValidEndTime = 25; //[DateTime]券有效期结束时间
+ string CouponGuide = 26; //券使用说明
+ int32 CouponGiftGrpId = 27; //券包券库ID
+ string CouponGiftName = 28; //券包名称
+ int32 GiftLimitType = 29; //券包总量限制（1：每日  2：累计）
+ int32 GiftLimitCount = 30; //券包限制数量
+ string IsActive = 31; //是否启用
+ int64 GiftGoldId = 32; //增值金配置表主键
+ int32 CreateUserId = 33; //创建人ID
+ int64 CreateDate = 34; //[DateTime]创建时间
+ int32 LastModifiedUserId = 35; //更新人ID
+ int64 LastModifiedDate = 36; //[DateTime]更新时间
+}
+
+message CrmWxCardGiftCardGovpushLogInfo {
+ int64 Id = 1; //主键
+ int32 CopId = 2; //集团编号
+ int32 BrandId = 3; //品牌编号
+ string CardCode = 4; //微信礼品卡code
+ int32 SourceType = 5; //来源类型 0:买卡 1:使用 2:退卡
+ int64 SourceId = 6; //来源ID,根据类型区分
+ string PushJson = 7; //推送Josn
+ string ResponseJson = 8; //请求响应体
+ string ErrorCode = 9; //错误码
+ int32 PushStatus = 10; //推送状态 1：已推送成功 2:推送失败
+ int64 CreateDate = 11; //[DateTime]创建时间
+ int64 LastModifiedDate = 12; //[DateTime]更新时间
 
 }
 
-message CrmWxcardGiftcardRefundInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string RefundCode = 4; // 微信退款单号
- string OrderCode = 5; // 微信订单号
- string TransactionId = 6; // 微信订单号
- int64 OrderId = 7; // 订单编号
- string WxPageId = 8; // 微信货架编号
- int32 PageId = 9; // 货架编号
- double Amount = 10; // 退款金额
- double WxCouponRefundAmount = 11; // 微信代金券退款总金额
- int32 WxCouponRefundCount = 12; // 微信退款代金券使用数量
- string WxOpenId = 13; // 退款人的openid
- int64 VipId = 14; // 会员id
- string RefundVipName = 15; // 退款人姓名昵称
- string MobilePhone = 16; // 退款人电话
- int32 Status = 17; // 退款状态（0:待退款 1:退款成功 2：退款失败）
- string RejectRemark = 18; // 拒绝退款原因
- string Remark = 19; // 申请退款原因
- int32 UserId = 20; // 退款审核人
- int32 UseChannel = 21; // 使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 90:小程序购卡 91:门店售卡
- int64 CreateDate = 22; // [DateTime]创建时间（申请退款时间）
- int64 LastModifiedDate = 23; // [DateTime]最后更新时间
- int32 RefundType = 24; // 退款类型 0-正常退款 1-异常退款
- int64 Id = 25; // 系统编号
- int32 CopId = 26; // 所属集团
- int32 BrandId = 27; // 所属品牌
- string RefundCode = 28; // 微信退款单号
- string OrderCode = 29; // 微信订单号
- string TransactionId = 30; // 微信订单号
- int64 OrderId = 31; // 订单编号
- string WxPageId = 32; // 微信货架编号
- int32 PageId = 33; // 货架编号
- double Amount = 34; // 退款金额
- double WxCouponRefundAmount = 35; // 微信代金券退款总金额
- int32 WxCouponRefundCount = 36; // 微信退款代金券使用数量
- string WxOpenId = 37; // 退款人的openid
- int64 VipId = 38; // 会员id
- string RefundVipName = 39; // 退款人姓名昵称
- string MobilePhone = 40; // 退款人电话
- int32 Status = 41; // 退款状态（0:待退款 1:退款成功 2：退款失败）
- string RejectRemark = 42; // 拒绝退款原因
- string Remark = 43; // 申请退款原因
- int32 UserId = 44; // 退款审核人
- int32 UseChannel = 45; // 使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 90:小程序购卡 91:门店售卡
- int64 CreateDate = 46; // [DateTime]创建时间（申请退款时间）
- int64 LastModifiedDate = 47; // [DateTime]最后更新时间
- int32 RefundType = 48; // 退款类型 0-正常退款 1-异常退款
+message CrmWxCardGiftCardOrderInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string OrderCode = 4; //订单号
+ int64 OrderPayId = 5; //支付id
+ int32 PageId = 6; //货架编号
+ string WxPageId = 7; //微信货架编码
+ string TransId = 8; //微信支付交易订单号
+ int64 WxCreateTime = 9; //[DateTime]订单在微信端创建时间
+ int64 WxPayFinishTime = 10; //[DateTime]订单支付完成时间
+ double TotalPrice = 11; //全部金额
+ double WxCouponAmount = 12; //微信代金券总金额
+ string WxCouponJson = 13; //微信代金券详情(json)
+ string WxOpenId = 14; //购买者的openid
+ int64 VipId = 15; //礼品卡购买者的会员ID
+ string WxAccepterOpenId = 16; //接收者的openid
+ string OuterStr = 17; //购买货架的渠道参数
+ string CardImg = 18; //赠送url
+ string PresendUrl = 19; //赠送url
+ int32 OrderSource = 20; //订单来源 1:微商城(礼品卡小程序) 2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入
+ int32 OrderType = 21; //订单类型 1 - 购买 2 - 赠送
+ string IsGuidePrePaid = 22; //是否导购储值订单
+ string Remark = 23; //备注
+ int32 ShopId = 24; //门店编号
+ int32 UserId = 25; //导购ID
+ int32 ImportUserId = 26; //导入员工ID
+ int64 ImportDate = 27; //[DateTime]导入时间
+ string SubMchId = 28; //微信支付商户号
+ int64 CreateDate = 29; //[DateTime]创建时间
+ int64 LastModifiedDate = 30; //[DateTime]最后更新时间
+ int32 DoUserId = 31; //操作的员工id
+}
+
+message CrmWxCardGiftCardPageCategoryInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int32 GiftCardPageId = 4; //货架编号
+ string Title = 5; //货架分类标题
+ int32 Status = 6; //货架分类状态 0:禁用 1:启用
+ int32 SortIndex = 7; //货架分类次序
+ string CreateUser = 8; //创建人
+ int64 CreateDate = 9; //[DateTime]创建时间
+ string LastModifiedUser = 10; //最后修改人
+ int64 LastModifiedDate = 11; //[DateTime]最后更新时间
+}
+
+message CrmWxCardGiftCardProdInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string WxCardId = 4; //微信礼品卡id
+ int64 ProdItemId = 5; //礼品卡关联的商品编号
+ string ProdItemNo = 6; //礼品卡关联的商品货号
+ string ProdItemName = 7; //礼品卡关联的商品名称
+ double SalePrice = 8; //礼品卡关联的商品售价
+ string ProdPictureThumb = 9; //礼品卡关联的商品缩略图
+ string CreateUser = 10; //创建人
+ int64 CreateDate = 11; //[DateTime]创建时间
+ string LastModifiedUser = 12; //最后修改人
+ int64 LastModifiedDate = 13; //[DateTime]最后修改时间
 
 }
 
-message CrmWxcardGiftcardShareInfo {
- int64 Id = 1; // Id
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int64 ActId = 4; // 卡规则Id
- string ShareTitle = 5; // 分享标题
- string ShareIcon = 6; // 分享好友图标
- int32 ShareTpl = 7; // 小程序海报模板 1:模板1 2:模板2 ..
- string ShareText = 8; // 分享海报文案
- string SharePic = 9; // 分享朋友圈海报，数组
- string CreateUser = 10; // 创建人
- int64 CreateDate = 11; // [DateTime]创建时间
- string LastModifiedUser = 12; // 最后修改人
- int64 LastModifiedDate = 13; // [DateTime]最后更新时间
- int64 Id = 14; // Id
- int32 CopId = 15; // 所属集团
- int32 BrandId = 16; // 所属品牌
- int64 ActId = 17; // 卡规则Id
- string ShareTitle = 18; // 分享标题
- string ShareIcon = 19; // 分享好友图标
- int32 ShareTpl = 20; // 小程序海报模板 1:模板1 2:模板2 ..
- string ShareText = 21; // 分享海报文案
- string SharePic = 22; // 分享朋友圈海报，数组
- string CreateUser = 23; // 创建人
- int64 CreateDate = 24; // [DateTime]创建时间
- string LastModifiedUser = 25; // 最后修改人
- int64 LastModifiedDate = 26; // [DateTime]最后更新时间
+message CrmWxCardGiftCardRefundLogInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string RefundId = 4; //微信退款单号
+ string RefundCode = 5; //商户退款单号
+ string TransId = 6; //微信支付交易订单号
+ string OrderCode = 7; //微信订单号
+ double OrderTotalAmount = 8; //订单总金额
+ double RefundAmount = 9; //退款金额
+ double CashPayAmount = 10; //现金支付金额
+ double CashRefundAmount = 11; //现金退款金额
+ double WxCouponRefundAmount = 12; //微信代金券退款总金额
+ int32 WxCouponRefundCount = 13; //微信退款代金券使用数量
+ string WxCardId = 14; //用户退款的礼品卡ID
+ string WxCardCode = 15; //用户退款的礼品卡Code
+ int64 CreateDate = 16; //[DateTime]创建时间
 
 }
 
-message CrmWxcardGiftcardStockLogInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string CardId = 4; // 微信礼品卡id
- int32 Stock = 5; // 库存增加数量
- string UserCode = 6; // 工号
- string CreateUser = 7; // 创建人
- int64 CreateDate = 8; // [DateTime]创建时间
+message CrmWxCardGiftCardShareInfo {
+ int64 Id = 1; //Id
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int64 ActId = 4; //卡规则Id
+ string ShareTitle = 5; //分享标题
+ string ShareIcon = 6; //分享好友图标
+ int32 ShareTpl = 7; //小程序海报模板 1:模板1 2:模板2 ..
+ string ShareText = 8; //分享海报文案
+ string SharePic = 9; //分享朋友圈海报，数组
+ string CreateUser = 10; //创建人
+ int64 CreateDate = 11; //[DateTime]创建时间
+ string LastModifiedUser = 12; //最后修改人
+ int64 LastModifiedDate = 13; //[DateTime]最后更新时间
 
 }
 
-message CrmWxcardGiftcardRefundCfgInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string IsAllowedRefund = 4; // 是否允许退款
- string IsOpenAudit = 5; // 是否开启审核
- string IsChargeManagementFee = 6; // 是否收取管理费
- string IsEnableDate = 7; // 是否开启购卡多少时间后收取管理费
- int32 DateType = 8; // 时间值
- int32 DateValue = 9; // 时间值
- double ManagementFee = 10; // 每日管理费
- string IsEnableRefundMinBalance = 11; // 是否开启储值卡允许退款的最低金额
- double AllowedRefundMinBalance = 12; // 储值卡允许退款的最低金额
- string IsEnableRefundMaxBalance = 13; // 是否开启储值卡允许退款的最高金额
- double AllowedRefundMaxBalance = 14; // 储值卡允许退款的最高金额
- int32 ReturnType = 15; // 退款方式(1、微信支付可用余额中退款2、微信支付未结算资金中退款)
- string CreateUser = 16; // 创建人
- int64 CreateDate = 17; // [DateTime]创建时间
- string LastModifiedUser = 18; // 最后修改人
- int64 LastModifiedDate = 19; // [DateTime]最后更新时间
+message CrmWxCardGiftCardRefundInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string RefundCode = 4; //微信退款单号
+ string OrderCode = 5; //微信订单号
+ string TransactionId = 6; //微信订单号
+ int64 OrderId = 7; //订单编号
+ string WxPageId = 8; //微信货架编号
+ int32 PageId = 9; //货架编号
+ double Amount = 10; //退款金额
+ double WxCouponRefundAmount = 11; //微信代金券退款总金额
+ int32 WxCouponRefundCount = 12; //微信退款代金券使用数量
+ string WxOpenId = 13; //退款人的openid
+ int64 VipId = 14; //会员id
+ string RefundVipName = 15; //退款人姓名昵称
+ string MobilePhone = 16; //退款人电话
+ int32 Status = 17; //退款状态（0:待退款 1:退款成功 2：退款失败）
+ string RejectRemark = 18; //拒绝退款原因
+ string Remark = 19; //申请退款原因
+ int32 UserId = 20; //退款审核人
+ int32 UseChannel = 21; //使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 90:小程序购卡 91:门店售卡
+ int64 CreateDate = 22; //[DateTime]创建时间（申请退款时间）
+ int64 LastModifiedDate = 23; //[DateTime]最后更新时间
+ int32 RefundType = 24; //退款类型 0-正常退款 1-异常退款
+}
+
+message CrmWxCardGiftCardBatchmakeListInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int32 BatchMakeId = 4; //批量售卡配置表Id
+ string WxCardCode = 5; //微信礼品卡code
+ string CardPwd = 6; //卡密
+ string Status = 7; //状态 true:已绑定,false:未绑定
+ string CreateUser = 8; //创建人
+ int32 CreateUserId = 9; //创建人Id
+ string CreateUserCode = 10; //创建人工号
+ int64 CreateDate = 11; //[DateTime]创建时间
+}
+
+message CrmWxCardGiftCardCardimgCfgInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string IsEnable = 4; //是否启用卡面
+ string ImgList = 5; //卡面列表
+ string CreateUser = 6; //创建人
+ int64 CreateDate = 7; //[DateTime]创建时间
+ string LastModifiedUser = 8; //最后修改人
+ int64 LastModifiedDate = 9; //[DateTime]最后更新时间
 
 }
 
-message CrmWxcardGiftcardCardimgCfgInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string IsEnable = 4; // 是否启用卡面
- string ImgList = 5; // 卡面列表
- string CreateUser = 6; // 创建人
- int64 CreateDate = 7; // [DateTime]创建时间
- string LastModifiedUser = 8; // 最后修改人
- int64 LastModifiedDate = 9; // [DateTime]最后更新时间
+message CrmWxCardGiftCardInviteInfo {
+ int64 Id = 1; //主键ID
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int64 OrderId = 4; //订单ID
+ string OrderCode = 5; //订单编号
+ int64 InviteVipId = 6; //招募的会员ID
+ int64 OrderFinishTime = 7; //[DateTime]订单完成时间
+ int64 RegisterTime = 8; //[DateTime]注册时间
+ int64 CreateDate = 9; //[DateTime]创建时间
 
 }
 
-message CrmWxcardGiftcardGiftLogInfo {
- int64 Id = 1; // 主键ID
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int64 ActId = 4; // 活动Id
- int64 VipId = 5; // 会员ID
- string IsGiveBonus = 6; // 是否赠送积分
- string IsGiveCoupon = 7; // 是否赠送券
- string IsGiveGift = 8; // 是否赠送券包
- int32 CouponGrpId = 9; // 券库ID
- int32 CouponGiftGrpId = 10; // 券包ID
- int32 BonusValue = 11; // 赠送的积分值
- string GiveCouponNo = 12; // 券券号，逗号分隔
- string CouponName = 13; // 券名称，逗号分隔只为展示
- string GiveGiftCouponNo = 14; // 券包券号，逗号相隔
- string GiftCouponName = 15; // 券包券名称，逗号分隔只为展示
- int64 OrderId = 16; // 订单ID
- string WxCardId = 17; // 卡ID
- int64 CardId = 18; // 卡规则ID
- string Remark = 19; // 备注
- int64 GiveDate = 20; // [DateTime]赠送时间
- int32 GiveDateInt = 21; // 赠送时间Int
- string IsGive = 22; // 是否赠送
- int64 CreateDate = 23; // [DateTime]创建时间
- int64 Id = 24; // 主键ID
- int32 CopId = 25; // 所属集团
- int32 BrandId = 26; // 所属品牌
- int64 ActId = 27; // 活动Id
- int64 VipId = 28; // 会员ID
- string IsGiveBonus = 29; // 是否赠送积分
- string IsGiveCoupon = 30; // 是否赠送券
- string IsGiveGift = 31; // 是否赠送券包
- int32 CouponGrpId = 32; // 券库ID
- int32 CouponGiftGrpId = 33; // 券包ID
- int32 BonusValue = 34; // 赠送的积分值
- string GiveCouponNo = 35; // 券券号，逗号分隔
- string CouponName = 36; // 券名称，逗号分隔只为展示
- string GiveGiftCouponNo = 37; // 券包券号，逗号相隔
- string GiftCouponName = 38; // 券包券名称，逗号分隔只为展示
- int64 OrderId = 39; // 订单ID
- string WxCardId = 40; // 卡ID
- int64 CardId = 41; // 卡规则ID
- string Remark = 42; // 备注
- int64 GiveDate = 43; // [DateTime]赠送时间
- int32 GiveDateInt = 44; // 赠送时间Int
- string IsGive = 45; // 是否赠送
- int64 CreateDate = 46; // [DateTime]创建时间
+message CrmWxCardGiftCardListLogInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string WxFromOpenId = 4; //礼品卡赠送人的微信openid
+ string WxToOpenId = 5; //礼品卡领取人的微信openid
+ int64 ToVipId = 6; //领取人
+ int64 FromVipId = 7; //赠送人
+ int64 GiftCardListId = 8; //礼品卡领取记录编号
+ double Balance = 9; //余额
+ double GiftBalance = 10; //赠送余额
+ double PriceBalance = 11; //本金余额
+ int32 Status = 12; //状态（0：首次领取，2：转赠，4：转赠领取，6：转赠退回 100:合卡迁移）
+ string TransId = 13; //操作流水号
+ int64 CreateDate = 14; //[DateTime]创建时间
 
 }
 
-message CrmWxcardGiftcardListLogInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string WxFromOpenId = 4; // 礼品卡赠送人的微信openid
- string WxToOpenId = 5; // 礼品卡领取人的微信openid
- int64 ToVipId = 6; // 领取人
- int64 FromVipId = 7; // 赠送人
- int64 GiftCardListId = 8; // 礼品卡领取记录编号
- double Balance = 9; // 余额
- double GiftBalance = 10; // 赠送余额
- double PriceBalance = 11; // 本金余额
- int32 Status = 12; // 状态（0：首次领取，2：转赠，4：转赠领取，6：转赠退回 100:合卡迁移）
- string TransId = 13; // 操作流水号
- int64 CreateDate = 14; // [DateTime]创建时间
+message CrmWxCardGiftCardOrderDtlInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int64 OrderId = 4; //订单编号
+ string WxCardId = 5; //购买的卡card_id
+ int64 VipId = 6; //买卡会员ID
+ double Price = 7; //该卡的价格
+ double Balance = 8; //卡初始余额
+ string Code = 9; //用户获得的code
+ int64 CreateDate = 10; //[DateTime]创建时间
+ int64 LastModifiedDate = 11; //[DateTime]最后修改时间
 
 }
 
-message CrmWxcardGiftcardOpenpayCfgInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string SubMchId = 4; // 微信支付商户号
- string WxPayKey = 5; // 微信安全支付密钥
- string PayCert = 6; // 支付证书文件
- string WxaAppId = 7; // 礼品卡小程序appid
- string OpenPayUrl = 8; // 
- double MaxPayAmount = 9; // 单笔订单最大支付金额
- string CreateUser = 10; // 创建人
- int64 CreateDate = 11; // [DateTime]创建时间
- string LastModifiedUser = 12; // 最后修改人
- int64 LastModifiedDate = 13; // [DateTime]最后更新时间
- int32 Id = 14; // 系统编号
- int32 CopId = 15; // 所属集团
- int32 BrandId = 16; // 所属品牌
- string SubMchId = 17; // 微信支付商户号
- string WxPayKey = 18; // 微信安全支付密钥
- string PayCert = 19; // 支付证书文件
- string WxaAppId = 20; // 礼品卡小程序appid
- string OpenPayUrl = 21; // 
- double MaxPayAmount = 22; // 单笔订单最大支付金额
- string CreateUser = 23; // 创建人
- int64 CreateDate = 24; // [DateTime]创建时间
- string LastModifiedUser = 25; // 最后修改人
- int64 LastModifiedDate = 26; // [DateTime]最后更新时间
+message CrmWxCardGiftCardOrderEventInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int64 OrderId = 4; //订单id
+ string OrderCode = 5; //订单号
+ int32 Type = 6; //1未付款自动取消
+ int64 ExpectRunTime = 7; //[DateTime]预期执行时间
+ int64 RealRunTime = 8; //[DateTime]实际执行时间
+ int32 Status = 9; //0:新建 1:执行完成
 
 }
 
-message CrmWxcardGiftcardOrderWxpayInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string OrderCode = 4; // 商户订单号
- int64 PayTime = 5; // [DateTime]付款时间
- int32 PayStatus = 6; // 支付状态0-未支付 1-支付成功 2-支付失败
- string PayErrMsg = 7; // 支付错误信息
- double PayAmount = 8; // 支付金额
- double WxCouponAmount = 9; // 微信代金券总金额
- string WxCouponJson = 10; // 微信代金券详情(json)
- string TransactionId = 11; // 微信支付订单号
- string SubMchId = 12; // 微信支付商户号
- string WxOpenAppId = 13; // 微信小程序appid
- int64 BuyerId = 14; // 会员Id
- string BuyerOpenId = 15; // 微信会员openid
- int64 CreateDate = 16; // [DateTime]创建时间
- int64 LastModifiedDate = 17; // [DateTime]最后修改时间
- int64 Id = 18; // 系统编号
- int32 CopId = 19; // 所属集团
- int32 BrandId = 20; // 所属品牌
- string OrderCode = 21; // 商户订单号
- int64 PayTime = 22; // [DateTime]付款时间
- int32 PayStatus = 23; // 支付状态0-未支付 1-支付成功 2-支付失败
- string PayErrMsg = 24; // 支付错误信息
- double PayAmount = 25; // 支付金额
- double WxCouponAmount = 26; // 微信代金券总金额
- string WxCouponJson = 27; // 微信代金券详情(json)
- string TransactionId = 28; // 微信支付订单号
- string SubMchId = 29; // 微信支付商户号
- string WxOpenAppId = 30; // 微信小程序appid
- int64 BuyerId = 31; // 会员Id
- string BuyerOpenId = 32; // 微信会员openid
- int64 CreateDate = 33; // [DateTime]创建时间
- int64 LastModifiedDate = 34; // [DateTime]最后修改时间
+message CrmWxCardGiftCardPageInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string PageId = 4; //微信货架Id
+ string PageTitle = 5; //货架标题
+ string BannerPicUrl = 6; //货架Banner图片,多张banner的数组json
+ string BannerWxPicUrl = 7; //货架Banner微信图片
+ string SupportMulti = 8; //是否支持一次购买多张及发送至群
+ string SupportGaveThemselves = 9; //是否支持购买给自己
+ string NeedReceipt = 10; //该货架的订单是否支持开发票
+ string IsWxGiftCardReturnAutoCheck = 11; //是否开启礼品卡退卡自动审核
+ string WxGiftCardReturnType = 12; //礼品卡退卡退款类型（ORDER：按订单整单退卡退款，CARD：按单个礼品卡退卡退款）
+ string Address = 13; //商家地址
+ string ServicePhone = 14; //商家服务电话
+ string Description = 15; //商家使用说明，用于描述退款、发票等流程
+ string CustomCell = 16; //商家自定义入口链接json字符串,包含title和url字段，用于承载退款、发票等流程
+ string CustomEntry = 17; //自定义入口
+ int32 Status = 18; //礼品卡货架状态 0:制作中 1:微信审核中 2：审核成功 3：审核失败
+ string IsSetWXA = 19; //是否上传到微信小程序
+ string CreateUser = 20; //创建人
+ int64 CreateDate = 21; //[DateTime]创建时间
+ string LastModifiedUser = 22; //最后修改人
+ int64 LastModifiedDate = 23; //[DateTime]最后更新时间
+}
+
+message CrmWxCardGiftCardStockLogInfo {
+ int32 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ string CardId = 4; //微信礼品卡id
+ int32 Stock = 5; //库存增加数量
+ string UserCode = 6; //工号
+ string CreateUser = 7; //创建人
+ int64 CreateDate = 8; //[DateTime]创建时间
 
 }
 
-message CrmWxcardGiftcardPageThemeInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int32 CategoryId = 4; // 货架类别编号
- string Title = 5; // 货架主题标题
- string ThemePicUrl = 6; // 货架主题图片
- string ThemeWxPicUrl = 7; // 货架主题微信图片
- string ThemeColor = 8; // 货架主题颜色
- int32 Status = 9; // 货架主题状态 0:禁用 1:启用
- int32 SortIndex = 10; // 货架分类主题排序
- string KMPicItems = 11; // 货架主题卡面结构体json字符串,包含BackgroundPicUrl,BackgroundWxPicUrl和DefaultGiftingMsg字段
- string GiftCardIds = 12; // 礼品卡ID
- string CreateUser = 13; // 创建人
- int64 CreateDate = 14; // [DateTime]创建时间
- string LastModifiedUser = 15; // 最后修改人
- int64 LastModifiedDate = 16; // [DateTime]最后更新时间
-
+message CrmWxCardGiftCardWxpayLogInfo {
+ int64 Id = 1; //系统编号
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属集团
+ string OpenId = 4; //
+ string AppId = 5; //小程序appid
+ string OrderCode = 6; //商户订单号
+ double TotalAmount = 7; //订单金额
+ string PrepayId = 8; //预支付交易会话标识
+ string TransactionId = 9; //微信支付单号
+ double PayAmount = 10; //支付金额
+ double WxCouponAmount = 11; //微信代金券总金额
+ string WxCouponJson = 12; //微信代金券详情(json)
+ int64 VipId = 13; //会员Id
+ string PageId = 14; //微信礼品卡货架Id
+ string WxGiftCard = 15; //订单包含的卡列表json
+ string BackgroundPicUrl = 16; //卡面背景图片
+ string DefaultGiftingMsg = 17; //默认祝福语 
+ int32 PayStatus = 18; //支付状态0 未支付 1 支付成功 2支付失败
+ int64 PayTime = 19; //[DateTime]支付时间
+ string PayErrMsg = 20; //支付错误信息
+ int32 OrderSource = 21; //订单来源 1 - 微信(礼品卡小程序) 2 - EZR小程序
+ int32 OrderType = 22; //订单类型 1 - 购买 2 - 赠送
+ string SubMchId = 23; //微信支付商户号
+ int64 CreateDate = 24; //[DateTime]创建时间
+ int64 LastModifiedDate = 25; //[DateTime]
 }
 
-message CrmWxcardGiftcardGiftdtlsInfo {
- int64 Id = 1; // 主键ID
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int64 ActId = 4; // 活动Id
- int32 CouponGrpId = 5; // 所属券库
- string CouponGrpName = 6; // 券库名称
- string CouponValidType = 7; // 券有效期类型
- int32 CouponValidDays = 8; // 券有效天数
- int32 CouponStartValidDays = 9; // 开始有效天数
- string CouponGuide = 10; // 券使用说明
- int32 CouponCount = 11; // 券张数
- int64 CouponBeginDate = 12; // [DateTime]券有效期开始日期
- int64 CouponEndDate = 13; // [DateTime]券有效期结束日期
- int32 CreateUserId = 14; // 创建人ID
- int64 CreateDate = 15; // [DateTime]创建时间
- int32 LastModifiedUserId = 16; // 更新人ID
- int64 LastModifiedDate = 17; // [DateTime]更新时间
-
-}
-
-message CrmWxcardGiftcardTradLogInfo {
- int64 Id = 1; // Id
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 品牌ID
- int64 VipId = 4; // 会员编号
- int64 CardListId = 5; // 购买卡编号
- string CardId = 6; // 微信CardId
- string CardCode = 7; // 卡号
- string CardTitle = 8; // 卡名称
- int32 TradType = 9; // 交易类型(1:开卡 2:核销-礼品卡 3:退款 4:退卡 5:扣款-储值卡 6:充值 7：手工减少 8：手工增加 9:退卡退款）
- string CardType = 10; // 卡类型 PC-储值卡 GC-礼品卡
- double TotalAmount = 11; // 总金额（开卡初始金额、礼品卡核销总面值、退款总金额、退卡总金额、扣款总金额）
- double GiveAmount = 12; // 赠送金额（仅储值卡有：开卡、扣款）
- double WxGiveAmount = 13; // 微信优惠
- double ActualAmount = 14; // 实际本金（开卡、扣款）
- double ManagementFee = 15; // 退款管理费（退款）
- int32 ShopId = 16; // 门店ID
- string ShopCode = 17; // 门店编号
- string ShopName = 18; // 门店名称
- int32 UseChannel = 19; // 使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 5:历史卡导入 90:小程序购卡 91:门店售卡
- int64 TradTime = 20; // [DateTime]交易时间
- string TradDate = 21; // TradTime的日期
- int64 SourceId = 22; // 源表ID
- int64 CreateTime = 23; // [DateTime]创建时间
-
-}
-
-message CrmWxcardGiftcardBatchmakeOperationLogInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int32 BatchMakeId = 4; // 批量售卡Id
- int32 Type = 5; // 操作类型 1:新建, 2:导出卡,3:添加备注
- string Content = 6; // 操作内容
- string CreateUser = 7; // 创建人
- int32 CreateUserId = 8; // 创建人Id
- string CreateUserCode = 9; // 创建人工号
- int64 CreateDate = 10; // [DateTime]创建时间
- int64 Id = 11; // 系统编号
- int32 CopId = 12; // 所属集团
- int32 BrandId = 13; // 所属品牌
- int32 BatchMakeId = 14; // 批量售卡Id
- int32 Type = 15; // 操作类型 1:新建；2:导出卡;3:添加备注
- string Content = 16; // 操作内容
- string CreateUser = 17; // 创建人
- int32 CreateUserId = 18; // 创建人Id
- string CreateUserCode = 19; // 创建人工号
- int64 CreateDate = 20; // [DateTime]创建时间
-
-}
-
-message CrmWxcardGiftcardPageInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string PageId = 4; // 微信货架Id
- string PageTitle = 5; // 货架标题
- string BannerPicUrl = 6; // 货架Banner图片,多张banner的数组json
- string BannerWxPicUrl = 7; // 货架Banner微信图片
- string SupportMulti = 8; // 是否支持一次购买多张及发送至群
- string SupportGaveThemselves = 9; // 是否支持购买给自己
- string NeedReceipt = 10; // 该货架的订单是否支持开发票
- string IsWxGiftCardReturnAutoCheck = 11; // 是否开启礼品卡退卡自动审核
- string WxGiftCardReturnType = 12; // 礼品卡退卡退款类型（ORDER：按订单整单退卡退款，CARD：按单个礼品卡退卡退款）
- string Address = 13; // 商家地址
- string ServicePhone = 14; // 商家服务电话
- string Description = 15; // 商家使用说明，用于描述退款、发票等流程
- string CustomCell = 16; // 商家自定义入口链接json字符串,包含title和url字段，用于承载退款、发票等流程
- string CustomEntry = 17; // 自定义入口
- int32 Status = 18; // 礼品卡货架状态 0:制作中 1:微信审核中 2：审核成功 3：审核失败
- string IsSetWXA = 19; // 是否上传到微信小程序
- string CreateUser = 20; // 创建人
- int64 CreateDate = 21; // [DateTime]创建时间
- string LastModifiedUser = 22; // 最后修改人
- int64 LastModifiedDate = 23; // [DateTime]最后更新时间
- int32 Id = 24; // 系统编号
- int32 CopId = 25; // 所属集团
- int32 BrandId = 26; // 所属品牌
- string PageId = 27; // 微信货架Id
- string PageTitle = 28; // 货架标题
- string BannerPicUrl = 29; // 货架Banner图片,多张banner的数组json
- string BannerWxPicUrl = 30; // 货架Banner微信图片
- string SupportMulti = 31; // 是否支持一次购买多张及发送至群
- string SupportGaveThemselves = 32; // 是否支持购买给自己
- string NeedReceipt = 33; // 该货架的订单是否支持开发票
- string IsWxGiftCardReturnAutoCheck = 34; // 是否开启礼品卡退卡自动审核
- string WxGiftCardReturnType = 35; // 礼品卡退卡退款类型（ORDER：按订单整单退卡退款，CARD：按单个礼品卡退卡退款）
- string Address = 36; // 商家地址
- string ServicePhone = 37; // 商家服务电话
- string Description = 38; // 商家使用说明，用于描述退款、发票等流程
- string CustomCell = 39; // 商家自定义入口链接json字符串,包含title和url字段，用于承载退款、发票等流程
- string CustomEntry = 40; // 自定义入口
- int32 Status = 41; // 礼品卡货架状态 0:制作中 1:微信审核中 2：审核成功 3：审核失败
- string IsSetWXA = 42; // 是否上传到微信小程序
- string CreateUser = 43; // 创建人
- int64 CreateDate = 44; // [DateTime]创建时间
- string LastModifiedUser = 45; // 最后修改人
- int64 LastModifiedDate = 46; // [DateTime]最后更新时间
-
-}
-
-message CrmWxcardGiftcardPayStateJobInfo {
- int64 Id = 1; // 
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string Appid = 4; // 公众账号ID
- string Mchid = 5; // 
- int64 OrderId = 6; // 订单id
- string OutTradeNo = 7; // 商户订单号
- int32 PayType = 8; // 支付方式0 微信
- int64 CreateDate = 9; // [DateTime]创建时间
- int64 Id = 10; // 
- int32 CopId = 11; // 所属集团
- int32 BrandId = 12; // 所属品牌
- string Appid = 13; // 公众账号ID
- string Mchid = 14; // 
- int64 OrderId = 15; // 订单id
- string OutTradeNo = 16; // 商户订单号
- int32 PayType = 17; // 支付方式0 微信
- int64 CreateDate = 18; // [DateTime]创建时间
-
-}
-
-message CrmWxcardGiftcardTradSummaryInfo {
- int64 Id = 1; // Id
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 品牌ID
- string TradDate = 4; // 交易日期
- int32 ShopId = 5; // 门店ID
- string ShopCode = 6; // 门店编号
- string ShopName = 7; // 门店名称
- int32 UseChannel = 8; // 使用渠道 0:第三方POS 1:EZR线上商城 2:EZR POS 3：会员录单 4：PC后台 5:历史卡导入 90:小程序购卡 91:门店售卡
- double GiftCardConsumeAmount = 9; // 礼品卡核销金额
- double GiftCardRefundAmount = 10; // 礼品卡退款金额
- double PetCardUseAmount = 11; // 储值卡扣款金额
- double PetCardRefundAmount = 12; // 储值卡退款金额
- double HandDownAmount = 13; // 手工减少金额
- int64 LastModifiedDate = 14; // [DateTime]最后更新时间
- int64 CreateDate = 15; // [DateTime]创建时间
-
-}
-
-message CrmWxcardGiftcardCardimgInfo {
- int64 Id = 1; // 主键key
- int32 BrandId = 2; // 品牌编号
- int32 CopId = 3; // 
- string CardImgUuId = 4; // 卡封面uuid
- string CardImgUrl = 5; // 卡面背景路径（EZR地址）
- int32 SellCnt = 6; // 售卖次数
- int64 CreateDate = 7; // [DateTime]创建时间
- int64 LastModifiedDate = 8; // [DateTime]更新时间
-
-}
-
-message CrmWxcardGiftcardOpenpayOtherCfgInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string SubMchId = 4; // 微信支付商户号
- string SubMchName = 5; // 商户号备注名
- string Status = 6; // 是否启用 false:未启用,true:启用
- string CreateUser = 7; // 创建人
- int64 CreateDate = 8; // [DateTime]创建时间
- int32 CreateUserId = 9; // 创建人Id
- string CreateUserCode = 10; // 创建人工号
- string LastModifiedUser = 11; // 最后修改人
- int64 LastModifiedDate = 12; // [DateTime]最后更新时间
- int32 LastModifiedUserId = 13; // 最后修改人Id
- string LastModifiedUserCode = 14; // 最后修改人工号
-
-}
-
-message CrmWxcardGiftcardOrderEventInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int64 OrderId = 4; // 订单id
- string OrderCode = 5; // 订单号
- int32 Type = 6; // 1未付款自动取消
- int64 ExpectRunTime = 7; // [DateTime]预期执行时间
- int64 RealRunTime = 8; // [DateTime]实际执行时间
- int32 Status = 9; // 0:新建 1:执行完成
-
-}
-
-message CrmWxcardGiftcardSellLogInfo {
- int64 Id = 1; // Id
- string CardId = 2; // 卡ID、微信卡ID
- int32 CopId = 3; // 所属集团
- int32 BrandId = 4; // 品牌ID
- int32 SellQuantity = 5; // 已售卖数量
- int64 LastModifiedDate = 6; // [DateTime]最后一次更新时间
-
-}
-
-message CrmWxcardGiftcardInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string CardId = 4; // 微信CardId
- string CardBrandName = 5; // 商户名称
- string CardTitle = 6; // 礼品卡名称
- string CardLogoPic = 7; // 礼品卡Logo图片
- string CardLogoWxPic = 8; // 礼品卡Logo微信图片
- string CoverType = 9; // 礼品卡封面背景类型
- string CoverPic = 10; // 礼品卡封面图片地址(ezp自己的图片)
- string CoverWxPic = 11; // 礼品卡封面图片地址(微信图片，微信不允许外部引用)
- string CoverColor = 12; // 礼品卡颜色(CoverType为1才有)
- int32 CardFaceType = 13; // 0：设置卡面值 1：自定义卡面值
- double Price = 14; // 礼品卡售价
- double InitBalance = 15; // 礼品卡初始余额
- double GiftAmount = 16; // 赠送金额
- int32 Quantity = 17; // 礼品卡库存的数量，不支持填写0，上限为100000000
- int32 CurrentQuantity = 18; // 可用库存
- int32 PerLimitCount = 19; // 每人限购数量(0：无限制)
- int32 StartLimitCount = 20; // 起购数量
- string IsShowInitBalance = 21; // 用户购买礼品卡后卡面上是否显示初始余额
- string ValidityType = 22; // 礼品卡有效期类型
- int32 ValidityDays = 23; // 礼品卡有效期天数
- int64 BegDate = 24; // [DateTime]礼品卡有效期开始日期
- int64 EndDate = 25; // [DateTime]礼品卡有效期结束日期
- string IsCanGiveFriend = 26; // 礼品卡是否可以转赠(1.可以 0.不可以)
- int32 CanGiveFriendMaxTimes = 27; // 礼品卡最大可赠送次数
- string CodeType = 28; // 礼品卡Code展示类型
- string CodeShowType = 29; // 礼品卡卡号展示类型（动态码：DY，静态码：ST）
- string SupplyCoupon = 30; // 默认菜单是否显示优惠券
- string SupplyGrade = 31; // 默认菜单是否显示等级
- string SupplyBalance = 32; // 默认菜单是否显示余额
- string SupplyBonus = 33; // 默认菜单是否显示积分
- string SupplyCustom = 34; // 是否显示自定义菜单
- string CustomMenuUrl = 35; // 自定义菜单跳转链接地址
- string CustomMenuName = 36; // 自定义菜单名称
- string CustomCell = 37; // 自定义会员信息类目json字符串，会员卡激活后显示,包含name和url字段
- string Notice = 38; // 礼品卡使用提醒，字数上限为12个汉字。
- string IsCanUseMallDiscount = 39; // 是否可以使用商城折扣活动
- string IsAllowCrmUse = 40; // 是否允许crm使用
- string IsAllowSaleCardShopUse = 41; // 仅售卡门店使用
- string IsAllowSaleCardMallUse = 42; // 仅售卡商城店使用
- string IsAllowMallUse = 43; // 是否允许商城使用
- string ShopIds = 44; // 
- string ShopType = 45; // 店铺类型(店铺，店群，片区)
- string MallShopType = 46; // 商城店铺类型
- string MallShopIds = 47; // 商城店铺Id,逗号相隔
- string PhysicalStoreAllowShopType = 48; // 门店售卡可售门店类型(店群，片区，门店)
- string PhysicalStoreAllowShopId = 49; // 门店售卡可售门店(店群，片区，门店)Ids
- string PhysicalStoreAllowShopIds = 50; // 门店售卡可售门店
- string Description = 51; // 礼品卡使用说明。长文本描述，可以分行，上限为1000个汉字。
- string AvailableTime = 52; // 可用时段
- string CenterType = 53; // 礼品卡居中的按钮类型（CS：自定义，WP：核销按钮）
- string CenterTitle = 54; // 礼品卡居中的按钮，仅在卡券状态正常(可以核销)时显示，建议用于引导使用或者充值流程
- string CenterSubTitle = 55; // 礼品卡居中按钮的引导提示语
- string CenterUrl = 56; // 礼品卡居中入口的链接
- string CenterUrlRemark = 57; // 中心按钮链接备注
- string IsCenterJumpWxa = 58; // 中心按钮是否跳转至小程序
- string CenterWxaAppId = 59; // 中心按钮跳转至小程序AppId
- string CenterAppBrandUserName = 60; // 中心按钮自定义cell对应的小程序username，格式为公众号原始id@app
- string CenterAppBrandPass = 61; // 中心按钮自定义cell对应的小程序路径
- string CustomUrlName = 62; // 商户自定义入口名称，与custom_url字段共同使用，长度限制在5个汉字内。
- string CustomUrl = 63; // 商户自定义入口跳转外链的地址链接,跳转页面内容需与自定义cell名称保持匹配。
- string CustomUrlRemark = 64; // 自定义入口01链接备注
- string CustomUrlSubTitle = 65; // 显示在自定义入口右侧的提示语，长度限制在6个汉字内。
- string IsCustomJumpWxa = 66; // 自定义01是否跳转至小程序
- string CustomWxaAppId = 67; // 自定义01跳转至小程序AppId
- string CustomAppBrandUserName = 68; // 自定义01cell对应的小程序username，格式为公众号原始id@app
- string CustomAppBrandPass = 69; // 自定义01cell对应的小程序路径
- string PromotionUrlName = 70; // 营销场景的自定义入口名称
- string PromotionUrl = 71; // 入口跳转外链的地址链接
- string PromotionUrlRemark = 72; // 自定义入口02链接备注
- string PromotionUrlSubTitle = 73; // 显示在营销入口右侧的提示语，长度限制在6个汉字内。
- string IsPromotionJumpWxa = 74; // 自定义02是否跳转至小程序
- string PromotionWxaAppId = 75; // 自定义02跳转至小程序AppId
- string PromotionAppBrandUserName = 76; // 自定义02cell对应的小程序username，格式为公众号原始id@app
- string PromotionAppBrandPass = 77; // 自定义02cell对应的小程序路径
- int64 ProdItemId = 78; // 礼品卡关联的商品编号
- string ProdPictureThumb = 79; // 礼品卡关联的商品缩略图
- string ProdWxPictureThumb = 80; // 礼品卡关联的商品缩略图(微信图片，微信不允许外部引用)
- string ProdDesc = 81; // 礼品卡关联的商品描述
- int32 CouponGrpId = 82; // 礼品卡关联的券库编号
- string CouponName = 83; // 礼品卡关联的券名称
- string CouponGuide = 84; // 礼品卡关联的券说明
- string CouponValidType = 85; // 礼品卡关联的券有效期类型
- int32 CouponDuration = 86; // 礼品卡关联的券有效期天数
- int64 CouponValidStartTime = 87; // [DateTime]礼品卡关联的券有效期开始时间
- int64 CouponValidEndTime = 88; // [DateTime]礼品卡关联的券有效期结束时间
- string IsEnableCenterButton = 89; // 是否启用中心按钮
- string CardType = 90; // 礼品卡关联商品类型（EN：实物商品，VT：虚拟商品）
- string IsConsumeWord = 91; // 是否启用消费者自助核销
- string ConsumeWord = 92; // 礼品卡核销口令
- int32 Status = 93; // 礼品卡状态 0:制作中 1:微信审核中 2：审核成功 3：审核失败
- int32 Type = 94; // 礼品卡类型 1 - 微信 2 - EZR
- int32 CardSource = 95; // 建卡来源 0 PC端创建 2 营销助手小店版创建
- string IsDefaultImport = 96; // 是否是默认的导入卡
- int64 OtherSubMchId = 97; // 微信支付商户配置表Id
- int64 GiftGoldId = 98; // 增值金配置表主键
- string CreateUser = 99; // 创建人
- int64 CreateDate = 100; // [DateTime]创建时间
- string LastModifiedUser = 101; // 最后修改人
- int64 LastModifiedDate = 102; // [DateTime]最后更新时间
- int32 Id = 103; // 系统编号
- int32 CopId = 104; // 所属集团
- int32 BrandId = 105; // 所属品牌
- string CardId = 106; // 微信CardId
- string CardBrandName = 107; // 商户名称
- string CardTitle = 108; // 礼品卡名称
- string CardLogoPic = 109; // 礼品卡Logo图片
- string CardLogoWxPic = 110; // 礼品卡Logo微信图片
- string CoverType = 111; // 礼品卡封面背景类型
- string CoverPic = 112; // 礼品卡封面图片地址(ezp自己的图片)
- string CoverWxPic = 113; // 礼品卡封面图片地址(微信图片，微信不允许外部引用)
- string CoverColor = 114; // 礼品卡颜色(CoverType为1才有)
- int32 CardFaceType = 115; // 0：设置卡面值 1：自定义卡面值
- double Price = 116; // 礼品卡售价
- double InitBalance = 117; // 礼品卡初始余额
- double GiftAmount = 118; // 赠送金额
- int32 Quantity = 119; // 礼品卡库存的数量，不支持填写0，上限为100000000
- int32 CurrentQuantity = 120; // 可用库存
- int32 PerLimitCount = 121; // 每人限购数量(0：无限制)
- int32 StartLimitCount = 122; // 起购数量
- string IsShowInitBalance = 123; // 用户购买礼品卡后卡面上是否显示初始余额
- string ValidityType = 124; // 礼品卡有效期类型
- int32 ValidityDays = 125; // 礼品卡有效期天数
- int64 BegDate = 126; // [DateTime]礼品卡有效期开始日期
- int64 EndDate = 127; // [DateTime]礼品卡有效期结束日期
- string IsCanGiveFriend = 128; // 礼品卡是否可以转赠(1.可以 0.不可以)
- int32 CanGiveFriendMaxTimes = 129; // 礼品卡最大可赠送次数
- string CodeType = 130; // 礼品卡Code展示类型
- string CodeShowType = 131; // 礼品卡卡号展示类型（动态码：DY，静态码：ST）
- string SupplyCoupon = 132; // 默认菜单是否显示优惠券
- string SupplyGrade = 133; // 默认菜单是否显示等级
- string SupplyBalance = 134; // 默认菜单是否显示余额
- string SupplyBonus = 135; // 默认菜单是否显示积分
- string SupplyCustom = 136; // 是否显示自定义菜单
- string CustomMenuUrl = 137; // 自定义菜单跳转链接地址
- string CustomMenuName = 138; // 自定义菜单名称
- string CustomCell = 139; // 自定义会员信息类目json字符串，会员卡激活后显示,包含name和url字段
- string Notice = 140; // 礼品卡使用提醒，字数上限为12个汉字。
- string IsCanUseMallDiscount = 141; // 是否可以使用商城折扣活动
- string IsAllowCrmUse = 142; // 是否允许crm使用
- string IsAllowSaleCardShopUse = 143; // 仅售卡门店使用
- string IsAllowSaleCardMallUse = 144; // 仅售卡商城店使用
- string IsAllowMallUse = 145; // 是否允许商城使用
- string ShopIds = 146; // 
- string ShopType = 147; // 店铺类型(店铺，店群，片区)
- string MallShopType = 148; // 商城店铺类型
- string MallShopIds = 149; // 商城店铺Id,逗号相隔
- string PhysicalStoreAllowShopType = 150; // 门店售卡可售门店类型(店群，片区，门店)
- string PhysicalStoreAllowShopId = 151; // 门店售卡可售门店(店群，片区，门店)Ids
- string PhysicalStoreAllowShopIds = 152; // 门店售卡可售门店
- string Description = 153; // 礼品卡使用说明。长文本描述，可以分行，上限为1000个汉字。
- string AvailableTime = 154; // 可用时段
- string CenterType = 155; // 礼品卡居中的按钮类型（CS：自定义，WP：核销按钮）
- string CenterTitle = 156; // 礼品卡居中的按钮，仅在卡券状态正常(可以核销)时显示，建议用于引导使用或者充值流程
- string CenterSubTitle = 157; // 礼品卡居中按钮的引导提示语
- string CenterUrl = 158; // 礼品卡居中入口的链接
- string CenterUrlRemark = 159; // 中心按钮链接备注
- string IsCenterJumpWxa = 160; // 中心按钮是否跳转至小程序
- string CenterWxaAppId = 161; // 中心按钮跳转至小程序AppId
- string CenterAppBrandUserName = 162; // 中心按钮自定义cell对应的小程序username，格式为公众号原始id@app
- string CenterAppBrandPass = 163; // 中心按钮自定义cell对应的小程序路径
- string CustomUrlName = 164; // 商户自定义入口名称，与custom_url字段共同使用，长度限制在5个汉字内。
- string CustomUrl = 165; // 商户自定义入口跳转外链的地址链接,跳转页面内容需与自定义cell名称保持匹配。
- string CustomUrlRemark = 166; // 自定义入口01链接备注
- string CustomUrlSubTitle = 167; // 显示在自定义入口右侧的提示语，长度限制在6个汉字内。
- string IsCustomJumpWxa = 168; // 自定义01是否跳转至小程序
- string CustomWxaAppId = 169; // 自定义01跳转至小程序AppId
- string CustomAppBrandUserName = 170; // 自定义01cell对应的小程序username，格式为公众号原始id@app
- string CustomAppBrandPass = 171; // 自定义01cell对应的小程序路径
- string PromotionUrlName = 172; // 营销场景的自定义入口名称
- string PromotionUrl = 173; // 入口跳转外链的地址链接
- string PromotionUrlRemark = 174; // 自定义入口02链接备注
- string PromotionUrlSubTitle = 175; // 显示在营销入口右侧的提示语，长度限制在6个汉字内。
- string IsPromotionJumpWxa = 176; // 自定义02是否跳转至小程序
- string PromotionWxaAppId = 177; // 自定义02跳转至小程序AppId
- string PromotionAppBrandUserName = 178; // 自定义02cell对应的小程序username，格式为公众号原始id@app
- string PromotionAppBrandPass = 179; // 自定义02cell对应的小程序路径
- int64 ProdItemId = 180; // 礼品卡关联的商品编号
- string ProdPictureThumb = 181; // 礼品卡关联的商品缩略图
- string ProdWxPictureThumb = 182; // 礼品卡关联的商品缩略图(微信图片，微信不允许外部引用)
- string ProdDesc = 183; // 礼品卡关联的商品描述
- int32 CouponGrpId = 184; // 礼品卡关联的券库编号
- string CouponName = 185; // 礼品卡关联的券名称
- string CouponGuide = 186; // 礼品卡关联的券说明
- string CouponValidType = 187; // 礼品卡关联的券有效期类型
- int32 CouponDuration = 188; // 礼品卡关联的券有效期天数
- int64 CouponValidStartTime = 189; // [DateTime]礼品卡关联的券有效期开始时间
- int64 CouponValidEndTime = 190; // [DateTime]礼品卡关联的券有效期结束时间
- string IsEnableCenterButton = 191; // 是否启用中心按钮
- string CardType = 192; // 礼品卡关联商品类型（EN：实物商品，VT：虚拟商品）
- string IsConsumeWord = 193; // 是否启用消费者自助核销
- string ConsumeWord = 194; // 礼品卡核销口令
- int32 Status = 195; // 礼品卡状态 0:制作中 1:微信审核中 2：审核成功 3：审核失败
- int32 Type = 196; // 礼品卡类型 1 - 微信 2 - EZR
- int32 CardSource = 197; // 建卡来源 0 PC端创建 2 营销助手小店版创建
- string IsDefaultImport = 198; // 是否是默认的导入卡
- int64 OtherSubMchId = 199; // 微信支付商户配置表Id
- string CreateUser = 200; // 创建人
- int64 CreateDate = 201; // [DateTime]创建时间
- string LastModifiedUser = 202; // 最后修改人
- int64 LastModifiedDate = 203; // [DateTime]最后更新时间
-
-}
-
-message CrmWxcardGiftcardConsumeLogInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string WxOpenId = 4; // 微信openId
- int64 VipId = 5; // 会员编号
- int64 CardListId = 6; // 卡编号
- string WxCardId = 7; // 微信礼品卡id
- string WxCardCode = 8; // 微信礼品卡code
- string TransId = 9; // 操作流水号
- string ExternalOrderId = 10; // 外部订单号
- string Remark = 11; // 说明备注
- int32 ShopId = 12; // 门店编号
- int32 UserId = 13; // 礼品卡核销操作员工ID
- int32 UseChannel = 14; // 使用渠道 0:第三方POS收银 1:EZR线上商城 2:EZR POS收银
- int64 CreateDate = 15; // [DateTime]创建时间
- int64 Id = 16; // 系统编号
- int32 CopId = 17; // 所属集团
- int32 BrandId = 18; // 所属品牌
- string WxOpenId = 19; // 微信openId
- int64 VipId = 20; // 会员编号
- int64 CardListId = 21; // 卡编号
- string WxCardId = 22; // 微信礼品卡id
- string WxCardCode = 23; // 微信礼品卡code
- string TransId = 24; // 操作流水号
- string ExternalOrderId = 25; // 外部订单号
- string Remark = 26; // 说明备注
- int32 ShopId = 27; // 门店编号
- int32 UserId = 28; // 礼品卡核销操作员工ID
- int32 UseChannel = 29; // 使用渠道 0:第三方POS收银 1:EZR线上商城 2:EZR POS收银
- int64 CreateDate = 30; // [DateTime]创建时间
-
-}
-
-message CrmWxcardGiftcardInviteInfo {
- int64 Id = 1; // 主键ID
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int64 OrderId = 4; // 订单ID
- string OrderCode = 5; // 订单编号
- int64 InviteVipId = 6; // 招募的会员ID
- int64 OrderFinishTime = 7; // [DateTime]订单完成时间
- int64 RegisterTime = 8; // [DateTime]注册时间
- int64 CreateDate = 9; // [DateTime]创建时间
-
-}
-
-message CrmWxcardGiftcardOrderDtlInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int64 OrderId = 4; // 订单编号
- string WxCardId = 5; // 购买的卡card_id
- int64 VipId = 6; // 买卡会员ID
- double Price = 7; // 该卡的价格
- double Balance = 8; // 卡初始余额
- string Code = 9; // 用户获得的code
- int64 CreateDate = 10; // [DateTime]创建时间
- int64 LastModifiedDate = 11; // [DateTime]最后修改时间
-
-}
-
-message CrmWxcardGiftcardPageCategoryInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int32 GiftCardPageId = 4; // 货架编号
- string Title = 5; // 货架分类标题
- int32 Status = 6; // 货架分类状态 0:禁用 1:启用
- int32 SortIndex = 7; // 货架分类次序
- string CreateUser = 8; // 创建人
- int64 CreateDate = 9; // [DateTime]创建时间
- string LastModifiedUser = 10; // 最后修改人
- int64 LastModifiedDate = 11; // [DateTime]最后更新时间
- int32 Id = 12; // 系统编号
- int32 CopId = 13; // 所属集团
- int32 BrandId = 14; // 所属品牌
- int32 GiftCardPageId = 15; // 货架编号
- string Title = 16; // 货架分类标题
- int32 Status = 17; // 货架分类状态 0:禁用 1:启用
- int32 SortIndex = 18; // 货架分类次序
- string CreateUser = 19; // 创建人
- int64 CreateDate = 20; // [DateTime]创建时间
- string LastModifiedUser = 21; // 最后修改人
- int64 LastModifiedDate = 22; // [DateTime]最后更新时间
-
-}
-
-message CrmWxcardGiftcardGiftgoldCfgInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string GiftGoldIsGive = 4; // 是否加赠增值金 false:不加赠,true:加赠
- double GiftGoldAmount = 5; // 赠送增值金金额
- string GiftGoldValidType = 6; // 增值金有效期类型
- int32 GiftGoldValidDays = 7; // 增值金有效天数
- int32 GiftGoldStartValidDays = 8; // 开始有效天数
- string GiftGoldGuide = 9; // 增值金使用说明
- int64 GiftGoldBeginDate = 10; // [DateTime]增值金有效期开始日期
- int64 GiftGoldEndDate = 11; // [DateTime]增值金有效期结束日期
- string GiftGoldUseRate = 12; // 赠送增值金首付金额百分比
- double GiftGoldUpperLimit = 13; // 单笔赠送金额上限
- int32 GiveType = 14; // 赠送类型 1-买卡赠送 2-邀请有礼赠送
- int64 CreateDate = 15; // [DateTime]创建时间
- int32 CreateUserId = 16; // 创建人Id
- string CreateUserCode = 17; // 创建人工号
- int64 LastModifiedDate = 18; // [DateTime]最后更新时间
- int32 LastModifiedUserId = 19; // 最后修改人Id
- string LastModifiedUserCode = 20; // 最后修改人工号
- int32 Id = 21; // 系统编号
- int32 CopId = 22; // 所属集团
- int32 BrandId = 23; // 所属品牌
- string GiftGoldIsGive = 24; // 是否加赠增值金 false:不加赠,true:加赠
- double GiftGoldAmount = 25; // 赠送增值金金额
- string GiftGoldValidType = 26; // 增值金有效期类型
- int32 GiftGoldValidDays = 27; // 增值金有效天数
- int32 GiftGoldStartValidDays = 28; // 开始有效天数
- string GiftGoldGuide = 29; // 增值金使用说明
- int64 GiftGoldBeginDate = 30; // [DateTime]增值金有效期开始日期
- int64 GiftGoldEndDate = 31; // [DateTime]增值金有效期结束日期
- string GiftGoldUseRate = 32; // 赠送增值金首付金额百分比
- double GiftGoldUpperLimit = 33; // 单笔赠送金额上限
- int32 GiveType = 34; // 赠送类型 1-买卡赠送 2-邀请有礼赠送
- int64 CreateDate = 35; // [DateTime]创建时间
- int32 CreateUserId = 36; // 创建人Id
- string CreateUserCode = 37; // 创建人工号
- int64 LastModifiedDate = 38; // [DateTime]最后更新时间
- int32 LastModifiedUserId = 39; // 最后修改人Id
- string LastModifiedUserCode = 40; // 最后修改人工号
-
-}
-
-message CrmWxcardGiftcardListInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string WxOpenId = 4; // 微信openid
- int64 VipId = 5; // 礼品卡所属的会员ID
- int64 OrderId = 6; // 订单编号
- int64 OrderDtlId = 7; // 订单明细编号
- int32 OrderSource = 8; // 订单来源 1:微商城(礼品卡小程序) 2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入
- string WxCardId = 9; // 微信礼品卡id
- string WxCardCode = 10; // 微信礼品卡code
- string OldWxCardCode = 11; // 老卡号，发生转增时的老卡号
- string CardType = 12; // 卡类型 PC-储值卡 GC-礼品卡
- double Balance = 13; // 余额
- double GiftBalance = 14; // 赠送余额
- double InitBalance = 15; // 初始余额
- double Price = 16; // 卡售价
- int32 Status = 17; // 状态（0：可使用，2：转赠中，4：已使用，6：已核销，8：已退款）
- int64 SellDate = 18; // [DateTime]核销时间
- int32 SellChannel = 19; // 核销渠道
- int32 CardFaceType = 20; // 0：设置卡面值 1：自定义卡面值
- int64 CardValidityBeginTime = 21; // [DateTime]卡有效开始时间
- int64 CardValidityEndTime = 22; // [DateTime]卡有效结束时间
- string IsGiveFriend = 23; // 是否转增
- int64 CreateDate = 24; // [DateTime]创建时间
- int64 LastModifiedDate = 25; // [DateTime]最后修改时间
- int64 Id = 26; // 系统编号
- int32 CopId = 27; // 所属集团
- int32 BrandId = 28; // 所属品牌
- string WxOpenId = 29; // 微信openid
- int64 VipId = 30; // 礼品卡所属的会员ID
- int64 OrderId = 31; // 订单编号
- int64 OrderDtlId = 32; // 订单明细编号
- int32 OrderSource = 33; // 订单来源 1:微商城(礼品卡小程序) 2:小程序购卡(EZR小程序) 3:门店售卡 4:历史卡导入
- string WxCardId = 34; // 微信礼品卡id
- string WxCardCode = 35; // 微信礼品卡code
- string OldWxCardCode = 36; // 老卡号，发生转增时的老卡号
- string CardType = 37; // 卡类型 PC-储值卡 GC-礼品卡
- double Balance = 38; // 余额
- double GiftBalance = 39; // 赠送余额
- double InitBalance = 40; // 初始余额
- double Price = 41; // 卡售价
- int32 Status = 42; // 状态（0：可使用，2：转赠中，4：已使用，6：已核销，8：已退款）
- int64 SellDate = 43; // [DateTime]核销时间
- int32 SellChannel = 44; // 核销渠道
- int32 CardFaceType = 45; // 0：设置卡面值 1：自定义卡面值
- int64 CardValidityBeginTime = 46; // [DateTime]卡有效开始时间
- int64 CardValidityEndTime = 47; // [DateTime]卡有效结束时间
- string IsGiveFriend = 48; // 是否转增
- int64 CreateDate = 49; // [DateTime]创建时间
- int64 LastModifiedDate = 50; // [DateTime]最后修改时间
-
-}
-
-message CrmWxcardGiftcardProdInfo {
- int32 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- string WxCardId = 4; // 微信礼品卡id
- int64 ProdItemId = 5; // 礼品卡关联的商品编号
- string ProdItemNo = 6; // 礼品卡关联的商品货号
- string ProdItemName = 7; // 礼品卡关联的商品名称
- double SalePrice = 8; // 礼品卡关联的商品售价
- string ProdPictureThumb = 9; // 礼品卡关联的商品缩略图
- string CreateUser = 10; // 创建人
- int64 CreateDate = 11; // [DateTime]创建时间
- string LastModifiedUser = 12; // 最后修改人
- int64 LastModifiedDate = 13; // [DateTime]最后修改时间
-
-}
-
-message CrmWxcardGiftcardRefundDtlInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属品牌
- int64 RefundId = 4; // 退款单编号
- int32 CardId = 5; // 礼品卡编号
- string WxCardId = 6; // 微信礼品卡编码
- int64 CardListId = 7; // 购买卡编号
- double Price = 8; // 该礼品卡的销售价格
- double Balance = 9; // 卡余额（可用余额包含赠送）
- double GiftBalance = 10; // 退款时的卡赠送余额
- double PriceBalance = 11; // 退款时的卡售价余额
- double RefundAmount = 12; // 退款金额
- double WxCouponRefundAmount = 13; // 微信代金券退款总金额
- int32 WxCouponRefundCount = 14; // 微信退款代金券使用数量
- double ManagementFee = 15; // 收取的管理费
- string CardCode = 16; // 用户退款的礼品卡code
- int32 Status = 17; // 退款状态 0退款中 1完成
- string FailReason = 18; // 退款失败原因
- int64 CreateDate = 19; // [DateTime]创建时间
- int64 LastModifiedDate = 20; // [DateTime]最后修改时间
- int64 Id = 21; // 系统编号
- int32 CopId = 22; // 所属集团
- int32 BrandId = 23; // 所属品牌
- int64 RefundId = 24; // 退款单编号
- int32 CardId = 25; // 礼品卡编号
- string WxCardId = 26; // 微信礼品卡编码
- int64 CardListId = 27; // 购买卡编号
- double Price = 28; // 该礼品卡的销售价格
- double Balance = 29; // 卡余额（可用余额包含赠送）
- double GiftBalance = 30; // 退款时的卡赠送余额
- double PriceBalance = 31; // 退款时的卡售价余额
- double RefundAmount = 32; // 退款金额
- double WxCouponRefundAmount = 33; // 微信代金券退款总金额
- int32 WxCouponRefundCount = 34; // 微信退款代金券使用数量
- double ManagementFee = 35; // 收取的管理费
- string CardCode = 36; // 用户退款的礼品卡code
- int32 Status = 37; // 退款状态 0退款中 1完成
- string FailReason = 38; // 退款失败原因
- int64 CreateDate = 39; // [DateTime]创建时间
- int64 LastModifiedDate = 40; // [DateTime]最后修改时间
-
-}
-
-message CrmWxcardGiftcardWxpayLogInfo {
- int64 Id = 1; // 系统编号
- int32 CopId = 2; // 所属集团
- int32 BrandId = 3; // 所属集团
- string OpenId = 4; // 
- string AppId = 5; // 小程序appid
- string OrderCode = 6; // 商户订单号
- double TotalAmount = 7; // 订单金额
- string PrepayId = 8; // 预支付交易会话标识
- string TransactionId = 9; // 微信支付单号
- double PayAmount = 10; // 支付金额
- double WxCouponAmount = 11; // 微信代金券总金额
- string WxCouponJson = 12; // 微信代金券详情(json)
- int64 VipId = 13; // 会员Id
- string PageId = 14; // 微信礼品卡货架Id
- string WxGiftCard = 15; // 订单包含的卡列表json
- string BackgroundPicUrl = 16; // 卡面背景图片
- string DefaultGiftingMsg = 17; // 默认祝福语 
- int32 PayStatus = 18; // 支付状态0 未支付 1 支付成功 2支付失败
- int64 PayTime = 19; // [DateTime]支付时间
- string PayErrMsg = 20; // 支付错误信息
- int32 OrderSource = 21; // 订单来源 1 - 微信(礼品卡小程序) 2 - EZR小程序
- int32 OrderType = 22; // 订单类型 1 - 购买 2 - 赠送
- string SubMchId = 23; // 微信支付商户号
- int64 CreateDate = 24; // [DateTime]创建时间
- int64 LastModifiedDate = 25; // [DateTime]
- int64 Id = 26; // 系统编号
- int32 CopId = 27; // 所属集团
- int32 BrandId = 28; // 所属集团
- string OpenId = 29; // 
- string AppId = 30; // 小程序appid
- string OrderCode = 31; // 商户订单号
- double TotalAmount = 32; // 订单金额
- string PrepayId = 33; // 预支付交易会话标识
- string TransactionId = 34; // 微信支付单号
- double PayAmount = 35; // 支付金额
- double WxCouponAmount = 36; // 微信代金券总金额
- string WxCouponJson = 37; // 微信代金券详情(json)
- int64 VipId = 38; // 会员Id
- string PageId = 39; // 微信礼品卡货架Id
- string WxGiftCard = 40; // 订单包含的卡列表json
- string BackgroundPicUrl = 41; // 卡面背景图片
- string DefaultGiftingMsg = 42; // 默认祝福语 
- int32 PayStatus = 43; // 支付状态0 未支付 1 支付成功 2支付失败
- int64 PayTime = 44; // [DateTime]支付时间
- string PayErrMsg = 45; // 支付错误信息
- int32 OrderSource = 46; // 订单来源 1 - 微信(礼品卡小程序) 2 - EZR小程序
- int32 OrderType = 47; // 订单类型 1 - 购买 2 - 赠送
- string SubMchId = 48; // 微信支付商户号
- int64 CreateDate = 49; // [DateTime]创建时间
- int64 LastModifiedDate = 50; // [DateTime]
-
+message CrmWxCardGiftCardGiftdtlsInfo {
+ int64 Id = 1; //主键ID
+ int32 CopId = 2; //所属集团
+ int32 BrandId = 3; //所属品牌
+ int64 ActId = 4; //活动Id
+ int32 CouponGrpId = 5; //所属券库
+ string CouponGrpName = 6; //券库名称
+ string CouponValidType = 7; //券有效期类型
+ int32 CouponValidDays = 8; //券有效天数
+ int32 CouponStartValidDays = 9; //开始有效天数
+ string CouponGuide = 10; //券使用说明
+ int32 CouponCount = 11; //券张数
+ int64 CouponBeginDate = 12; //[DateTime]券有效期开始日期
+ int64 CouponEndDate = 13; //[DateTime]券有效期结束日期
+ int32 CreateUserId = 14; //创建人ID
+ int64 CreateDate = 15; //[DateTime]创建时间
+ int32 LastModifiedUserId = 16; //更新人ID
+ int64 LastModifiedDate = 17; //[DateTime]更新时间
 }
 
 

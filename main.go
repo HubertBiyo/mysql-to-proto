@@ -26,6 +26,7 @@ var typeArr = map[string]string{
 	"decimal":   "double",
 	"float":     "float",
 	"datetime":  "datetime",
+	"blob":      "blob",
 }
 
 type Table struct {
@@ -235,9 +236,12 @@ func (r *RpcServers) HandleMessage(t *Table) {
 					field.TypeName = TypeMToP(f.Type)
 					if f.Type == "datetime" {
 						field.TypeName = "int64"
-						field.Comment = "; // [DateTime]" + f.Comment
+						field.Comment = "; //[DateTime]" + f.Comment
+					} else if f.Type == "blob" {
+						field.TypeName = "string"
+						field.Comment = "; //用的时候要转成byte[] Convert.FromBase64String" + f.Comment
 					} else {
-						field.Comment = "; // " + f.Comment
+						field.Comment = "; //" + f.Comment
 					}
 
 					field.Num = i
